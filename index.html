@@ -1,0 +1,5260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agahi Group of Schools - Result Management System</title>
+
+<style>
+
+/* =========================================================
+   PROFESSIONAL COLOR SYSTEM
+========================================================= */
+
+:root{
+    --primary:#155eef;
+    --primary-dark:#0b4bc4;
+    --primary-light:#eaf2ff;
+
+    --secondary:#0f2747;
+    --secondary-light:#173b68;
+
+    --gold:#d9a441;
+    --gold-light:#fff7df;
+
+    --success:#15803d;
+    --success-light:#dcfce7;
+
+    --danger:#dc2626;
+    --danger-light:#fee2e2;
+
+    --warning:#d97706;
+
+    --background:#f4f7fb;
+    --card:#ffffff;
+
+    --border:#d9e2ef;
+
+    --text:#172033;
+    --muted:#64748b;
+
+    --white:#ffffff;
+
+    --shadow:
+        0 8px 30px rgba(15,39,71,.08);
+
+    --radius:14px;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:var(--background);
+    color:var(--text);
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+}
+
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.topbar{
+
+    height:72px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--secondary),
+            var(--secondary-light)
+        );
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 26px;
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.12);
+}
+
+
+.brand{
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    font-size:19px;
+    font-weight:700;
+}
+
+
+.brand-icon{
+
+    width:44px;
+    height:44px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #3b82f6
+        );
+
+    box-shadow:
+        0 5px 15px rgba(37,99,235,.3);
+
+    font-size:22px;
+}
+
+
+.top-actions{
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+}
+
+
+.top-btn{
+
+    border:1px solid rgba(255,255,255,.2);
+
+    background:
+        rgba(255,255,255,.08);
+
+    color:white;
+
+    padding:9px 15px;
+
+    border-radius:8px;
+
+    transition:.2s;
+}
+
+
+.top-btn:hover{
+
+    background:
+        rgba(255,255,255,.16);
+
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.layout{
+
+    display:flex;
+
+    min-height:
+        calc(100vh - 72px);
+
+}
+
+
+.sidebar{
+
+    width:250px;
+
+    background:white;
+
+    border-right:
+        1px solid var(--border);
+
+    padding:20px 13px;
+
+    flex-shrink:0;
+}
+
+
+.nav-title{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+
+    font-weight:700;
+
+    padding:12px;
+
+}
+
+
+.nav-btn{
+
+    width:100%;
+
+    border:0;
+
+    background:transparent;
+
+    padding:12px 13px;
+
+    text-align:left;
+
+    border-radius:9px;
+
+    margin-bottom:4px;
+
+    color:var(--text);
+
+    font-weight:500;
+
+    transition:.2s;
+}
+
+
+.nav-btn:hover{
+
+    background:
+        var(--primary-light);
+
+    color:var(--primary);
+
+}
+
+
+.nav-btn.active{
+
+    background:
+        linear-gradient(
+            90deg,
+            #eaf2ff,
+            #f4f8ff
+        );
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    border-left:
+        4px solid var(--primary);
+
+}
+
+
+.main{
+
+    flex:1;
+
+    padding:28px;
+
+    min-width:0;
+}
+
+
+.page{
+    display:none;
+}
+
+
+.page.active{
+    display:block;
+}
+
+
+.page-header{
+
+    margin-bottom:24px;
+}
+
+
+.page-header h1{
+
+    margin:0 0 7px;
+
+    font-size:30px;
+
+    color:var(--secondary);
+
+}
+
+
+.page-header p{
+
+    margin:0;
+
+    color:var(--muted);
+
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card{
+
+    background:var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    padding:22px;
+
+    margin-bottom:22px;
+}
+
+
+.card-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:var(--secondary);
+
+    margin-bottom:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+
+.card-title::before{
+
+    content:"";
+
+    width:4px;
+
+    height:20px;
+
+    border-radius:5px;
+
+    background:
+        var(--primary);
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+
+    margin-bottom:24px;
+}
+
+
+.stat-card{
+
+    background:white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    padding:21px;
+
+    box-shadow:
+        var(--shadow);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.stat-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:80px;
+    height:80px;
+
+    right:-25px;
+    top:-25px;
+
+    background:
+        rgba(21,94,239,.06);
+
+    border-radius:50%;
+}
+
+
+.stat-label{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+
+.stat-value{
+
+    color:var(--secondary);
+
+    font-size:32px;
+
+    font-weight:800;
+
+    margin-top:8px;
+
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:16px;
+}
+
+
+.form-grid-3{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+}
+
+
+.form-group.full{
+
+    grid-column:
+        1/-1;
+}
+
+
+label{
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#475569;
+}
+
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius:9px;
+
+    padding:11px 12px;
+
+    outline:none;
+
+    background:white;
+
+    color:var(--text);
+
+    transition:.2s;
+}
+
+
+input:hover,
+select:hover,
+textarea:hover{
+
+    border-color:#94a3b8;
+
+}
+
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color:
+        var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(21,94,239,.1);
+
+}
+
+
+textarea{
+
+    min-height:90px;
+
+    resize:vertical;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn{
+
+    border:0;
+
+    border-radius:9px;
+
+    padding:10px 16px;
+
+    font-weight:700;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    transition:.2s;
+}
+
+
+.btn:hover{
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.btn-primary{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #3b82f6
+        );
+
+    color:white;
+
+    box-shadow:
+        0 5px 12px
+        rgba(21,94,239,.2);
+
+}
+
+
+.btn-primary:hover{
+
+    background:
+        var(--primary-dark);
+
+}
+
+
+.btn-success{
+
+    background:
+        var(--success);
+
+    color:white;
+}
+
+
+.btn-danger{
+
+    background:
+        var(--danger);
+
+    color:white;
+}
+
+
+.btn-warning{
+
+    background:
+        var(--warning);
+
+    color:white;
+}
+
+
+.btn-light{
+
+    background:#edf2f7;
+
+    color:#334155;
+}
+
+
+.btn-outline{
+
+    background:white;
+
+    color:var(--primary);
+
+    border:
+        1px solid var(--primary);
+}
+
+
+.actions{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:18px;
+}
+
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+.table-wrapper{
+
+    overflow-x:auto;
+}
+
+
+table{
+
+    width:100%;
+
+    border-collapse:
+        collapse;
+}
+
+
+th,
+td{
+
+    padding:12px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    text-align:left;
+
+    font-size:14px;
+}
+
+
+th{
+
+    background:
+        #f5f8fc;
+
+    font-weight:700;
+
+    color:#475569;
+
+    white-space:nowrap;
+}
+
+
+tbody tr:hover td{
+
+    background:
+        #f8fbff;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge{
+
+    display:inline-block;
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+.badge-success{
+
+    background:
+        var(--success-light);
+
+    color:#166534;
+}
+
+
+.badge-danger{
+
+    background:
+        var(--danger-light);
+
+    color:#991b1b;
+}
+
+
+.badge-blue{
+
+    background:
+        #e00ebd;
+
+    color:#1e40af;
+}
+
+
+/* =========================================================
+   SUBJECT MARKS
+========================================================= */
+
+.subject-row{
+
+    display:grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr auto;
+
+    gap:10px;
+
+    align-items:end;
+
+    margin-bottom:10px;
+}
+
+
+.subject-list-header{
+
+    display:grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr auto;
+
+    gap:10px;
+
+    font-size:12px;
+
+    color:var(--muted);
+
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+
+/* =========================================================
+   RESULT AREA
+========================================================= */
+
+.result-wrapper{
+
+    display:none;
+
+    margin-top:25px;
+}
+
+
+.result-wrapper.show{
+
+    display:block;
+}
+
+
+.result-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:8px;
+
+    margin-bottom:15px;
+}
+
+
+/* =========================================================
+   PROFESSIONAL DMC
+========================================================= */
+
+.result-card{
+
+    width:210mm;
+
+    max-width:100%;
+
+    margin:0 auto;
+
+    background:white;
+
+    border:
+        1px solid #cbd5e1;
+
+    padding:12mm;
+
+    box-shadow:
+        0 12px 35px
+        rgba(15,39,71,.12);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+/* Decorative border */
+
+.result-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:5mm;
+
+    border:
+        1px solid #d9a441;
+
+    pointer-events:none;
+
+}
+
+
+/* =========================================================
+   DMC HEADER - CENTERED
+========================================================= */
+
+.school-header{
+
+    text-align:center;
+
+    padding:15px 10px 17px;
+
+    margin-bottom:18px;
+
+    border-bottom:
+        3px solid var(--primary);
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #ffffff
+        );
+
+    border-radius:
+        10px 10px 0 0;
+
+    position:relative;
+}
+
+
+.school-logo{
+
+    width:82px;
+
+    height:82px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:0 auto 10px;
+
+    border-radius:50%;
+
+    border:
+        3px solid var(--primary);
+
+    padding:4px;
+
+    background:white;
+
+}
+
+
+.school-name{
+
+    font-size:26px;
+
+    font-weight:800;
+
+    color:#0f3d75;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+
+    line-height:1.25;
+}
+
+
+.school-address{
+
+    color:#475569;
+
+    font-size:13px;
+
+    margin-top:5px;
+
+    font-weight:500;
+}
+
+
+.official-record{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:6px 16px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #3b82f6
+        );
+
+    color:white;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.2px;
+}
+
+
+/* =========================================================
+   RESULT TITLE
+========================================================= */
+
+.result-title{
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:var(--secondary);
+
+    margin:16px 0;
+
+    text-transform:uppercase;
+}
+
+
+.result-session{
+
+    display:inline-block;
+
+    margin-top:5px;
+
+    font-size:12px;
+
+    font-weight:500;
+
+    color:var(--muted);
+
+    text-transform:none;
+}
+
+
+/* =========================================================
+   STUDENT INFORMATION
+========================================================= */
+
+.student-info{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    border:
+        1px solid #b8c7d9;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    margin-bottom:17px;
+}
+
+
+.info-item{
+
+    padding:9px 11px;
+
+    border-bottom:
+        1px solid #d9e2ef;
+
+    background:#fff;
+}
+
+
+.info-item:nth-child(odd){
+
+    border-right:
+        1px solid #d9e2ef;
+}
+
+
+.info-label{
+
+    font-size:9px;
+
+    color:#64748b;
+
+    text-transform:uppercase;
+
+    letter-spacing:.6px;
+
+    font-weight:700;
+}
+
+
+.info-value{
+
+    font-weight:700;
+
+    color:var(--secondary);
+
+    margin-top:4px;
+}
+
+
+/* =========================================================
+   MARKS TABLE
+========================================================= */
+
+.marks-table{
+
+    width:100%;
+
+    border-collapse:
+        collapse;
+}
+
+
+.marks-table th,
+.marks-table td{
+
+    border:
+        1px solid #b8c7d9;
+
+    padding:8px;
+
+    font-size:12px;
+}
+
+
+.marks-table th{
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf2ff,
+            #dceaff
+        );
+
+    color:
+        var(--secondary);
+
+    text-align:center;
+}
+
+
+.marks-table td{
+
+    text-align:center;
+}
+
+
+.marks-table td:nth-child(2){
+
+    text-align:left;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   RESULT SUMMARY
+========================================================= */
+
+.result-summary{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    border:
+        1px solid #b8c7d9;
+
+    margin-top:17px;
+
+    border-radius:8px;
+
+    overflow:hidden;
+}
+
+
+.summary-item{
+
+    text-align:center;
+
+    padding:11px 5px;
+
+    border-right:
+        1px solid #b8c7d9;
+
+    background:#fafcff;
+}
+
+
+.summary-item:last-child{
+
+    border-right:0;
+}
+
+
+.summary-label{
+
+    font-size:9px;
+
+    color:#64748b;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+}
+
+
+.summary-value{
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:var(--secondary);
+
+    margin-top:4px;
+}
+
+
+/* =========================================================
+   SIGNATURES
+========================================================= */
+
+.signatures{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:35px;
+
+    margin-top:50px;
+
+    text-align:center;
+}
+
+
+.signature-space{
+
+    min-height:25px;
+}
+
+
+.signature-line{
+
+    border-top:
+        1px solid #334155;
+
+    padding-top:7px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    color:var(--secondary);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.result-footer{
+
+    margin-top:22px;
+
+    padding-top:10px;
+
+    border-top:
+        1px solid #d9e2ef;
+
+    text-align:center;
+
+    font-size:9px;
+
+    color:#64748b;
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.settings-note{
+
+    background:
+        var(--gold-light);
+
+    border-left:
+        4px solid var(--gold);
+
+    padding:12px;
+
+    border-radius:7px;
+
+    color:#785719;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+.mobile-menu{
+
+    display:none;
+
+    background:transparent;
+
+    color:white;
+
+    border:0;
+
+    font-size:23px;
+}
+
+
+@media(max-width:1000px){
+
+    .dashboard-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .form-grid-3{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .sidebar{
+
+        position:fixed;
+
+        left:-270px;
+
+        top:72px;
+
+        bottom:0;
+
+        z-index:150;
+
+        transition:.25s;
+
+        box-shadow:
+            5px 0 20px
+            rgba(0,0,0,.1);
+    }
+
+
+    .sidebar.open{
+
+        left:0;
+    }
+
+
+    .mobile-menu{
+
+        display:block;
+    }
+
+
+    .main{
+
+        padding:20px;
+    }
+
+}
+
+
+@media(max-width:700px){
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .form-grid,
+    .form-grid-3{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .subject-row{
+
+        grid-template-columns:
+            1fr 1fr 1fr auto;
+    }
+
+
+    .result-card{
+
+        padding:8mm;
+    }
+
+
+    .result-summary{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .summary-item:nth-child(2){
+
+        border-right:0;
+    }
+
+
+    .summary-item{
+
+        border-bottom:
+            1px solid #b8c7d9;
+    }
+
+}
+
+
+@media(max-width:550px){
+
+    .topbar{
+
+        padding:0 12px;
+    }
+
+
+    .brand span{
+
+        display:none;
+    }
+
+
+    .top-actions{
+
+        display:none;
+    }
+
+
+    .main{
+
+        padding:15px;
+    }
+
+
+    .student-info{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .info-item:nth-child(odd){
+
+        border-right:0;
+    }
+
+
+    .signatures{
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+    }
+
+
+    .school-name{
+
+        font-size:21px;
+    }
+
+
+    .result-title{
+
+        font-size:17px;
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    body{
+
+        background:white;
+    }
+
+
+    .topbar,
+    .sidebar,
+    .page-header,
+    .result-actions,
+    .no-print,
+    .modal{
+
+        display:none !important;
+    }
+
+
+    .layout,
+    .main{
+
+        display:block;
+
+        padding:0;
+
+        margin:0;
+    }
+
+
+    .page{
+
+        display:none !important;
+    }
+
+
+    #adminPage{
+
+        display:block !important;
+    }
+
+
+    #adminPage > *:not(.result-wrapper){
+
+        display:none !important;
+    }
+
+
+    .result-wrapper{
+
+        display:block !important;
+
+        margin:0;
+    }
+
+
+    .result-card{
+
+        width:100%;
+
+        max-width:none;
+
+        box-shadow:none;
+
+        border:0;
+
+        padding:7mm;
+
+        margin:0;
+
+        min-height:270mm;
+    }
+
+
+    .result-card::before{
+
+        inset:3mm;
+
+    }
+
+
+    @page{
+
+        size:A4;
+
+        margin:7mm;
+    }
+
+}
+
+
+/* =========================================================
+   PRINT COLOR SUPPORT
+========================================================= */
+
+@media print{
+
+    .school-header{
+
+        -webkit-print-color-adjust:exact;
+
+        print-color-adjust:exact;
+    }
+
+
+    .official-record,
+    .marks-table th{
+
+        -webkit-print-color-adjust:exact;
+
+        print-color-adjust:exact;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+<!-- =======================================================
+     TOP BAR
+======================================================= -->
+
+<header class="topbar">
+
+    <button
+        class="mobile-menu"
+        onclick="toggleSidebar()">
+
+        ☰
+
+    </button>
+
+
+    <div class="brand">
+
+        <div class="brand-icon">
+
+            🎓
+
+        </div>
+
+        <span>
+
+            Agahi Group of Schools
+            — Result Management
+
+        </span>
+
+    </div>
+
+
+    <div class="top-actions">
+
+        <button
+            class="top-btn"
+            onclick="showPage('dashboardPage')">
+
+            Dashboard
+
+        </button>
+
+
+        <button
+            class="top-btn"
+            onclick="showPage('adminPage')">
+
+            New Result
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<div class="layout">
+
+
+<!-- =======================================================
+     SIDEBAR
+======================================================= -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <div class="nav-title">
+
+        Main
+
+    </div>
+
+
+    <button
+        class="nav-btn active"
+        data-page="dashboardPage"
+        onclick="showPage('dashboardPage')">
+
+        📊 Dashboard
+
+    </button>
+
+
+    <button
+        class="nav-btn"
+        data-page="adminPage"
+        onclick="showPage('adminPage')">
+
+        📝 Manage Results
+
+    </button>
+
+
+    <div class="nav-title">
+
+        System
+
+    </div>
+
+
+    <button
+        class="nav-btn"
+        data-page="settingsPage"
+        onclick="showPage('settingsPage')">
+
+        ⚙️ School Settings
+
+    </button>
+
+
+</aside>
+
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main class="main">
+
+
+<!-- =======================================================
+     DASHBOARD
+======================================================= -->
+
+<section
+    class="page active"
+    id="dashboardPage">
+
+
+    <div class="page-header">
+
+        <h1>
+
+            Dashboard
+
+        </h1>
+
+
+        <p>
+
+            Manage student results and generate professional
+            academic DMCs.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="dashboard-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+
+                Total Results
+
+            </div>
+
+
+            <div
+                class="stat-value"
+                id="statStudents">
+
+                0
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+
+                Classes
+
+            </div>
+
+
+            <div
+                class="stat-value"
+                id="statClasses">
+
+                0
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+
+                Sections
+
+            </div>
+
+
+            <div
+                class="stat-value"
+                id="statSections">
+
+                0
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+
+                Passing Results
+
+            </div>
+
+
+            <div
+                class="stat-value"
+                id="statPassed">
+
+                0
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="card">
+
+
+        <div class="card-title">
+
+            Quick Actions
+
+        </div>
+
+
+        <div class="actions">
+
+
+            <button
+                class="btn btn-primary"
+                onclick="showPage('adminPage')">
+
+                ➕ Create New Result
+
+            </button>
+
+
+            <button
+                class="btn btn-outline"
+                onclick="showLatestResult()">
+
+                📄 View Latest Result
+
+            </button>
+
+
+            <button
+                class="btn btn-light"
+                onclick="loadDemoData()">
+
+                🧪 Load Demo Data
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="card">
+
+
+        <div class="card-title">
+
+            About This System
+
+        </div>
+
+
+        <p style="
+            color:#64748b;
+            line-height:1.7;
+            margin:0;
+        ">
+
+            This is a personal result management system for
+            Agahi Group of Schools. Student records are stored
+            locally in your browser. You can create results,
+            calculate grades automatically, generate professional
+            DMCs and print them as A4 PDF documents.
+
+        </p>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =======================================================
+     ADMIN / RESULT MANAGEMENT
+======================================================= -->
+
+<section
+    class="page"
+    id="adminPage">
+
+
+    <div class="page-header">
+
+        <h1>
+
+            Result Management
+
+        </h1>
+
+
+        <p>
+
+            Create, save and manage student academic results.
+
+        </p>
+
+    </div>
+
+
+
+<!-- =======================================================
+     STUDENT INFORMATION
+======================================================= -->
+
+<div class="card">
+
+
+    <div class="card-title">
+
+        Student Information
+
+    </div>
+
+
+    <div class="form-grid-3">
+
+
+        <div class="form-group">
+
+            <label>
+
+                Student Name *
+
+            </label>
+
+
+            <input
+                id="studentName"
+                placeholder="Enter student name">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+
+                Roll Number *
+
+            </label>
+
+
+            <input
+                id="rollNumber"
+                placeholder="e.g. 101">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+
+                Father / Guardian Name
+
+            </label>
+
+
+            <input
+                id="fatherName"
+                placeholder="Enter father / guardian name">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+
+                Class *
+
+            </label>
+
+
+            <input
+                id="className"
+                placeholder="e.g. 10">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+
+                Section *
+
+            </label>
+
+
+            <input
+                id="sectionName"
+                placeholder="e.g. A">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+
+                Academic Session
+
+            </label>
+
+
+            <input
+                id="session"
+                value="2026-27">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+
+                Term / Examination
+
+            </label>
+
+
+            <select id="examType">
+
+                <option>
+
+                    Annual Examination
+
+                </option>
+
+
+                <option>
+
+                    Mid Term Examination
+
+                </option>
+
+
+                <option>
+
+                    First Term Examination
+
+                </option>
+
+
+                <option>
+
+                    Second Term Examination
+
+                </option>
+
+
+                <option>
+
+                    Monthly Test
+
+                </option>
+
+            </select>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     SUBJECT MARKS
+======================================================= -->
+
+<div class="card">
+
+
+    <div class="card-title">
+
+        Subject Marks
+
+    </div>
+
+
+    <div class="subject-list-header">
+
+        <div>
+
+            Subject
+
+        </div>
+
+
+        <div>
+
+            Obtained
+
+        </div>
+
+
+        <div>
+
+            Maximum
+
+        </div>
+
+
+        <div></div>
+
+    </div>
+
+
+    <div id="subjectRows"></div>
+
+
+    <div class="actions">
+
+
+        <button
+            class="btn btn-light"
+            onclick="addSubjectRow()">
+
+            ➕ Add Subject
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     SAVE
+======================================================= -->
+
+<div class="card">
+
+
+    <div class="card-title">
+
+        Save Result
+
+    </div>
+
+
+    <div class="actions">
+
+
+        <button
+            class="btn btn-primary"
+            onclick="saveStudent()">
+
+            💾 Save Result
+
+        </button>
+
+
+        <button
+            class="btn btn-light"
+            onclick="clearStudentForm()">
+
+            ↺ Clear Form
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     SAVED RESULTS
+======================================================= -->
+
+<div class="card">
+
+
+    <div class="card-title">
+
+        Saved Results
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+
+        <table>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+
+                        Roll
+
+                    </th>
+
+
+                    <th>
+
+                        Student Name
+
+                    </th>
+
+
+                    <th>
+
+                        Class
+
+                    </th>
+
+
+                    <th>
+
+                        Section
+
+                    </th>
+
+
+                    <th>
+
+                        Percentage
+
+                    </th>
+
+
+                    <th>
+
+                        Grade
+
+                    </th>
+
+
+                    <th>
+
+                        Status
+
+                    </th>
+
+
+                    <th>
+
+                        Actions
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody
+                id="adminStudentTable">
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     RESULT DMC
+======================================================= -->
+
+<div
+    class="result-wrapper"
+    id="resultWrapper">
+
+
+    <div class="result-actions">
+
+
+        <button
+            class="btn btn-primary"
+            onclick="printResult()">
+
+            🖨️ Print / Save PDF
+
+        </button>
+
+
+        <button
+            class="btn btn-success"
+            onclick="shareWhatsApp()">
+
+            💬 WhatsApp
+
+        </button>
+
+
+        <button
+            class="btn btn-light"
+            onclick="closeResult()">
+
+            ✕ Close
+
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="result-card"
+        id="resultCard">
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =======================================================
+     SETTINGS
+======================================================= -->
+
+<section
+    class="page"
+    id="settingsPage">
+
+
+    <div class="page-header">
+
+        <h1>
+
+            School Settings
+
+        </h1>
+
+
+        <p>
+
+            Configure the information displayed on the DMC.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="card">
+
+
+        <div class="settings-note">
+
+            These details will appear on every generated DMC.
+
+        </div>
+
+
+
+        <div class="card-title">
+
+            School Information
+
+        </div>
+
+
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label>
+
+                    School Name
+
+                </label>
+
+
+                <input
+                    id="schoolName"
+                    placeholder="Agahi Group of Schools">
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>
+
+                    School Logo URL
+
+                </label>
+
+
+                <input
+                    id="schoolLogo"
+                    placeholder="https://example.com/logo.png">
+
+            </div>
+
+
+
+            <div class="form-group full">
+
+                <label>
+
+                    School Address
+
+                </label>
+
+
+                <input
+                    id="schoolAddress"
+                    placeholder="Sariab Road, Quetta">
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>
+
+                    Principal Name
+
+                </label>
+
+
+                <input
+                    id="principalName"
+                    placeholder="Principal Name">
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="actions">
+
+
+            <button
+                class="btn btn-primary"
+                onclick="saveSettings()">
+
+                💾 Save Settings
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- DATA MANAGEMENT -->
+
+    <div class="card">
+
+
+        <div class="card-title">
+
+            Data Management
+
+        </div>
+
+
+        <p style="
+            color:#64748b;
+            line-height:1.7;
+        ">
+
+            Student records and school settings are stored
+            in your browser using localStorage. Use the backup
+            option regularly if the records are important.
+
+        </p>
+
+
+        <div class="actions">
+
+
+            <button
+                class="btn btn-outline"
+                onclick="exportData()">
+
+                📥 Export Backup
+
+            </button>
+
+
+            <button
+                class="btn btn-light"
+                onclick="
+                    document
+                    .getElementById('importFile')
+                    .click()
+                ">
+
+                📤 Import Backup
+
+            </button>
+
+
+            <input
+                type="file"
+                id="importFile"
+                accept=".json"
+                style="display:none"
+                onchange="importData(event)">
+
+
+            <button
+                class="btn btn-danger"
+                onclick="deleteAllData()">
+
+                🗑️ Delete All Data
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+const STORAGE_KEY =
+    "agahi_school_students_v2";
+
+const SETTINGS_KEY =
+    "agahi_school_settings_v2";
+
+
+let students =
+    JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+        || "[]"
+    );
+
+
+let settings =
+    JSON.parse(
+        localStorage.getItem(SETTINGS_KEY)
+        ||
+        JSON.stringify({
+
+            schoolName:
+                "Agahi Group of Schools",
+
+            schoolLogo:
+                "",
+
+            schoolAddress:
+                "Sariab Road, Quetta",
+
+            principalName:
+                "Principal"
+
+        })
+    );
+
+
+let selectedStudent = null;
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadSettings();
+
+        createDefaultSubjects();
+
+        refreshAll();
+
+    }
+);
+
+
+/* =========================================================
+   DEFAULT SUBJECTS
+========================================================= */
+
+function createDefaultSubjects(){
+
+    const container =
+        document.getElementById(
+            "subjectRows"
+        );
+
+
+    if(
+        container.children.length > 0
+    ){
+
+        return;
+
+    }
+
+
+    addSubjectRow(
+        "English",
+        "",
+        "100"
+    );
+
+
+    addSubjectRow(
+        "Mathematics",
+        "",
+        "100"
+    );
+
+
+    addSubjectRow(
+        "Science",
+        "",
+        "100"
+    );
+
+
+    addSubjectRow(
+        "Computer",
+        "",
+        "100"
+    );
+
+
+    addSubjectRow(
+        "Social Studies",
+        "",
+        "100"
+    );
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showPage(pageId){
+
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            page =>
+                page.classList.remove(
+                    "active"
+                )
+        );
+
+
+    const page =
+        document.getElementById(
+            pageId
+        );
+
+
+    if(page){
+
+        page.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(
+            button =>
+                button.classList.remove(
+                    "active"
+                )
+        );
+
+
+    const activeButton =
+        document.querySelector(
+            `.nav-btn[data-page="${pageId}"]`
+        );
+
+
+    if(activeButton){
+
+        activeButton.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document
+        .getElementById("sidebar")
+        .classList.remove(
+            "open"
+        );
+
+}
+
+
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList.toggle(
+            "open"
+        );
+
+}
+
+
+/* =========================================================
+   SUBJECT ROW
+========================================================= */
+
+function addSubjectRow(
+    name="",
+    obtained="",
+    maximum="100"
+){
+
+    const container =
+        document.getElementById(
+            "subjectRows"
+        );
+
+
+    const row =
+        document.createElement(
+            "div"
+        );
+
+
+    row.className =
+        "subject-row";
+
+
+    row.innerHTML = `
+
+        <input
+            class="subject-name"
+            placeholder="Subject"
+            value="${escapeAttr(name)}">
+
+
+        <input
+            class="subject-obtained"
+            type="number"
+            min="0"
+            placeholder="0"
+            value="${escapeAttr(obtained)}">
+
+
+        <input
+            class="subject-max"
+            type="number"
+            min="1"
+            placeholder="100"
+            value="${escapeAttr(maximum)}">
+
+
+        <button
+            class="btn btn-danger"
+            type="button"
+            onclick="
+                this.parentElement.remove()
+            ">
+
+            ✕
+
+        </button>
+
+    `;
+
+
+    container.appendChild(
+        row
+    );
+
+}
+
+
+/* =========================================================
+   SAVE STUDENT
+========================================================= */
+
+function saveStudent(){
+
+    const name =
+        document
+        .getElementById(
+            "studentName"
+        )
+        .value
+        .trim();
+
+
+    const roll =
+        document
+        .getElementById(
+            "rollNumber"
+        )
+        .value
+        .trim();
+
+
+    const className =
+        document
+        .getElementById(
+            "className"
+        )
+        .value
+        .trim();
+
+
+    const section =
+        document
+        .getElementById(
+            "sectionName"
+        )
+        .value
+        .trim();
+
+
+    if(
+        !name ||
+        !roll ||
+        !className ||
+        !section
+    ){
+
+        alert(
+            "Please enter Student Name, Roll Number, Class and Section."
+        );
+
+        return;
+
+    }
+
+
+    const subjects = [];
+
+
+    document
+        .querySelectorAll(
+            "#subjectRows .subject-row"
+        )
+        .forEach(
+            row => {
+
+                const subject =
+                    row
+                    .querySelector(
+                        ".subject-name"
+                    )
+                    .value
+                    .trim();
+
+
+                const obtained =
+                    Number(
+                        row
+                        .querySelector(
+                            ".subject-obtained"
+                        )
+                        .value
+                        || 0
+                    );
+
+
+                const maximum =
+                    Number(
+                        row
+                        .querySelector(
+                            ".subject-max"
+                        )
+                        .value
+                        || 100
+                    );
+
+
+                if(subject){
+
+                    subjects.push({
+
+                        subject,
+
+                        obtained,
+
+                        maximum
+
+                    });
+
+                }
+
+            }
+        );
+
+
+    if(
+        subjects.length === 0
+    ){
+
+        alert(
+            "Please add at least one subject."
+        );
+
+        return;
+
+    }
+
+
+    for(
+        const subject
+        of subjects
+    ){
+
+        if(
+            subject.maximum <= 0
+        ){
+
+            alert(
+                "Maximum marks must be greater than zero."
+            );
+
+            return;
+
+        }
+
+
+        if(
+            subject.obtained < 0
+            ||
+            subject.obtained >
+            subject.maximum
+        ){
+
+            alert(
+                `Obtained marks for ${subject.subject} must be between 0 and ${subject.maximum}.`
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    const result =
+        calculateResult(
+            subjects
+        );
+
+
+    const student = {
+
+        id:
+            Date.now()
+            .toString(),
+
+        name,
+
+        roll,
+
+        father:
+            document
+            .getElementById(
+                "fatherName"
+            )
+            .value
+            .trim(),
+
+        className,
+
+        section,
+
+        session:
+            document
+            .getElementById(
+                "session"
+            )
+            .value
+            .trim(),
+
+        examType:
+            document
+            .getElementById(
+                "examType"
+            )
+            .value,
+
+        subjects,
+
+        total:
+            result.total,
+
+        maximum:
+            result.maximum,
+
+        percentage:
+            result.percentage,
+
+        grade:
+            result.grade,
+
+        status:
+            result.status,
+
+        createdAt:
+            new Date()
+            .toISOString()
+
+    };
+
+
+    const existingIndex =
+        students.findIndex(
+            s =>
+
+                s.roll
+                    .toLowerCase()
+                    ===
+                    roll.toLowerCase()
+
+                &&
+
+                s.className
+                    .toLowerCase()
+                    ===
+                    className.toLowerCase()
+
+                &&
+
+                s.section
+                    .toLowerCase()
+                    ===
+                    section.toLowerCase()
+        );
+
+
+    if(
+        existingIndex >= 0
+    ){
+
+        if(
+            !confirm(
+                "A result with this roll number already exists in this class and section. Update it?"
+            )
+        ){
+
+            return;
+
+        }
+
+
+        student.id =
+            students[
+                existingIndex
+            ].id;
+
+
+        students[
+            existingIndex
+        ] =
+            student;
+
+    }
+    else{
+
+        students.push(
+            student
+        );
+
+    }
+
+
+    saveStudents();
+
+    refreshAll();
+
+    alert(
+        "Student result saved successfully."
+    );
+
+
+    showResult(
+        student
+    );
+
+}
+
+
+/* =========================================================
+   CALCULATE RESULT
+========================================================= */
+
+function calculateResult(
+    subjects
+){
+
+    let total = 0;
+
+    let maximum = 0;
+
+    let passed = true;
+
+
+    subjects.forEach(
+        subject => {
+
+            total +=
+                Number(
+                    subject.obtained
+                );
+
+
+            maximum +=
+                Number(
+                    subject.maximum
+                );
+
+
+            const percentage =
+                (
+                    Number(
+                        subject.obtained
+                    )
+                    /
+                    Number(
+                        subject.maximum
+                    )
+                )
+                * 100;
+
+
+            if(
+                percentage < 40
+            ){
+
+                passed = false;
+
+            }
+
+        }
+    );
+
+
+    const percentage =
+        maximum > 0
+
+        ?
+
+        (
+            total
+            /
+            maximum
+        )
+        * 100
+
+        :
+
+        0;
+
+
+    let grade = "F";
+
+
+    if(
+        percentage >= 90
+    ){
+
+        grade = "A+";
+
+    }
+    else if(
+        percentage >= 80
+    ){
+
+        grade = "A";
+
+    }
+    else if(
+        percentage >= 70
+    ){
+
+        grade = "B";
+
+    }
+    else if(
+        percentage >= 60
+    ){
+
+        grade = "C";
+
+    }
+    else if(
+        percentage >= 50
+    ){
+
+        grade = "D";
+
+    }
+    else if(
+        percentage >= 40
+    ){
+
+        grade = "E";
+
+    }
+
+
+    if(
+        percentage < 40
+    ){
+
+        passed = false;
+
+    }
+
+
+    return {
+
+        total,
+
+        maximum,
+
+        percentage:
+            Number(
+                percentage.toFixed(2)
+            ),
+
+        grade,
+
+        status:
+            passed
+            ? "PASS"
+            : "FAIL"
+
+    };
+
+}
+
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+function saveStudents(){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(
+            students
+        )
+    );
+
+}
+
+
+function saveSettings(){
+
+    settings = {
+
+        schoolName:
+            document
+            .getElementById(
+                "schoolName"
+            )
+            .value
+            .trim()
+            ||
+            "Agahi Group of Schools",
+
+        schoolLogo:
+            document
+            .getElementById(
+                "schoolLogo"
+            )
+            .value
+            .trim(),
+
+        schoolAddress:
+            document
+            .getElementById(
+                "schoolAddress"
+            )
+            .value
+            .trim()
+            ||
+            "Sariab Road, Quetta",
+
+        principalName:
+            document
+            .getElementById(
+                "principalName"
+            )
+            .value
+            .trim()
+            ||
+            "Principal"
+
+    };
+
+
+    localStorage.setItem(
+        SETTINGS_KEY,
+        JSON.stringify(
+            settings
+        )
+    );
+
+
+    alert(
+        "School settings saved successfully."
+    );
+
+
+    refreshAll();
+
+}
+
+
+/* =========================================================
+   LOAD SETTINGS
+========================================================= */
+
+function loadSettings(){
+
+    document
+        .getElementById(
+            "schoolName"
+        )
+        .value =
+        settings.schoolName;
+
+
+    document
+        .getElementById(
+            "schoolLogo"
+        )
+        .value =
+        settings.schoolLogo;
+
+
+    document
+        .getElementById(
+            "schoolAddress"
+        )
+        .value =
+        settings.schoolAddress;
+
+
+    document
+        .getElementById(
+            "principalName"
+        )
+        .value =
+        settings.principalName;
+
+}
+
+
+/* =========================================================
+   REFRESH ALL
+========================================================= */
+
+function refreshAll(){
+
+    students =
+        JSON.parse(
+            localStorage.getItem(
+                STORAGE_KEY
+            )
+            || "[]"
+        );
+
+
+    updateDashboard();
+
+    renderAdminTable();
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function updateDashboard(){
+
+    const classes =
+        new Set(
+            students.map(
+                student =>
+                    student.className
+            )
+        );
+
+
+    const sections =
+        new Set(
+            students.map(
+                student =>
+                    `${student.className}-${student.section}`
+            )
+        );
+
+
+    const passed =
+        students.filter(
+            student =>
+                student.status
+                ===
+                "PASS"
+        ).length;
+
+
+    document
+        .getElementById(
+            "statStudents"
+        )
+        .textContent =
+        students.length;
+
+
+    document
+        .getElementById(
+            "statClasses"
+        )
+        .textContent =
+        classes.size;
+
+
+    document
+        .getElementById(
+            "statSections"
+        )
+        .textContent =
+        sections.size;
+
+
+    document
+        .getElementById(
+            "statPassed"
+        )
+        .textContent =
+        passed;
+
+}
+
+
+/* =========================================================
+   ADMIN TABLE
+========================================================= */
+
+function renderAdminTable(){
+
+    const tbody =
+        document
+        .getElementById(
+            "adminStudentTable"
+        );
+
+
+    tbody.innerHTML = "";
+
+
+    if(
+        students.length === 0
+    ){
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="8"
+                    style="
+                        text-align:center;
+                        color:#64748b;
+                        padding:30px;
+                    ">
+
+                    No results saved yet.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    students
+        .slice()
+        .reverse()
+        .forEach(
+            student => {
+
+                const tr =
+                    document
+                    .createElement(
+                        "tr"
+                    );
+
+
+                tr.innerHTML = `
+
+                    <td>
+                        ${escapeHtml(
+                            student.roll
+                        )}
+                    </td>
+
+
+                    <td>
+                        <strong>
+                            ${escapeHtml(
+                                student.name
+                            )}
+                        </strong>
+                    </td>
+
+
+                    <td>
+                        ${escapeHtml(
+                            student.className
+                        )}
+                    </td>
+
+
+                    <td>
+                        ${escapeHtml(
+                            student.section
+                        )}
+                    </td>
+
+
+                    <td>
+                        ${student.percentage}%
+                    </td>
+
+
+                    <td>
+
+                        <span
+                            class="badge badge-blue">
+
+                            ${escapeHtml(
+                                student.grade
+                            )}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span
+                            class="badge ${
+                                student.status === "PASS"
+                                ? "badge-success"
+                                : "badge-danger"
+                            }">
+
+                            ${student.status}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <button
+                            class="btn btn-outline"
+                            onclick="
+                                showResultById(
+                                    '${escapeAttr(
+                                        student.id
+                                    )}'
+                                )
+                            ">
+
+                            View DMC
+
+                        </button>
+
+
+                        <button
+                            class="btn btn-danger"
+                            onclick="
+                                deleteStudent(
+                                    '${escapeAttr(
+                                        student.id
+                                    )}'
+                                )
+                            ">
+
+                            Delete
+
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                tbody.appendChild(
+                    tr
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   SHOW RESULT
+========================================================= */
+
+function showResultById(
+    id
+){
+
+    const student =
+        students.find(
+            student =>
+                student.id === id
+        );
+
+
+    if(student){
+
+        showResult(
+            student
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SHOW LATEST
+========================================================= */
+
+function showLatestResult(){
+
+    if(
+        students.length === 0
+    ){
+
+        alert(
+            "No results are available yet."
+        );
+
+        return;
+
+    }
+
+
+    const latest =
+        students[
+            students.length - 1
+        ];
+
+
+    showPage(
+        "adminPage"
+    );
+
+
+    showResult(
+        latest
+    );
+
+}
+
+
+/* =========================================================
+   GENERATE DMC
+========================================================= */
+
+function showResult(
+    student
+){
+
+    selectedStudent =
+        student;
+
+
+    const wrapper =
+        document
+        .getElementById(
+            "resultWrapper"
+        );
+
+
+    const card =
+        document
+        .getElementById(
+            "resultCard"
+        );
+
+
+    let logo = "";
+
+
+    if(
+        settings.schoolLogo
+    ){
+
+        logo = `
+
+            <img
+                class="school-logo"
+                src="${escapeAttr(
+                    settings.schoolLogo
+                )}"
+                alt="School Logo"
+                onerror="
+                    this.style.display='none'
+                ">
+
+        `;
+
+    }
+
+
+    const subjectRows =
+        student.subjects
+        .map(
+            (
+                subject,
+                index
+            ) => {
+
+                const percentage =
+                    subject.maximum > 0
+
+                    ?
+
+                    (
+                        subject.obtained
+                        /
+                        subject.maximum
+                    )
+                    * 100
+
+                    :
+
+                    0;
+
+
+                const status =
+                    percentage >= 40
+                    ? "PASS"
+                    : "FAIL";
+
+
+                return `
+
+                    <tr>
+
+                        <td>
+
+                            ${index + 1}
+
+                        </td>
+
+
+                        <td>
+
+                            ${escapeHtml(
+                                subject.subject
+                            )}
+
+                        </td>
+
+
+                        <td>
+
+                            ${subject.maximum}
+
+                        </td>
+
+
+                        <td>
+
+                            ${subject.obtained}
+
+                        </td>
+
+
+                        <td>
+
+                            ${percentage.toFixed(
+                                1
+                            )}%
+
+                        </td>
+
+
+                        <td>
+
+                            <span
+                                class="badge ${
+                                    status === "PASS"
+                                    ? "badge-success"
+                                    : "badge-danger"
+                                }">
+
+                                ${status}
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        )
+        .join("");
+
+
+    const resultColor =
+        student.status === "PASS"
+        ? "#15803d"
+        : "#dc2626";
+
+
+    card.innerHTML = `
+
+        <!-- DMC HEADER -->
+
+        <div
+            class="school-header">
+
+            ${logo}
+
+
+            <div
+                class="school-name">
+
+                ${escapeHtml(
+                    settings.schoolName
+                )}
+
+            </div>
+
+
+            <div
+                class="school-address">
+
+                ${escapeHtml(
+                    settings.schoolAddress
+                )}
+
+            </div>
+
+
+            <div
+                class="official-record">
+
+                Official Academic Record
+
+            </div>
+
+        </div>
+
+
+        <!-- EXAMINATION TITLE -->
+
+        <div
+            class="result-title">
+
+            ${escapeHtml(
+                student.examType
+            )}
+
+
+            <div
+                class="result-session">
+
+                Academic Session:
+                ${escapeHtml(
+                    student.session
+                )}
+
+            </div>
+
+        </div>
+
+
+        <!-- STUDENT INFORMATION -->
+
+        <div
+            class="student-info">
+
+
+            <div
+                class="info-item">
+
+                <div
+                    class="info-label">
+
+                    Student Name
+
+                </div>
+
+
+                <div
+                    class="info-value">
+
+                    ${escapeHtml(
+                        student.name
+                    )}
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="info-item">
+
+                <div
+                    class="info-label">
+
+                    Roll Number
+
+                </div>
+
+
+                <div
+                    class="info-value">
+
+                    ${escapeHtml(
+                        student.roll
+                    )}
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="info-item">
+
+                <div
+                    class="info-label">
+
+                    Father / Guardian
+
+                </div>
+
+
+                <div
+                    class="info-value">
+
+                    ${escapeHtml(
+                        student.father
+                        || "-"
+                    )}
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="info-item">
+
+                <div
+                    class="info-label">
+
+                    Class / Section
+
+                </div>
+
+
+                <div
+                    class="info-value">
+
+                    ${escapeHtml(
+                        student.className
+                    )}
+
+                    -
+
+                    ${escapeHtml(
+                        student.section
+                    )}
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- MARKS -->
+
+        <table
+            class="marks-table">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+
+                    <th>
+                        Subject
+                    </th>
+
+
+                    <th>
+                        Maximum
+                    </th>
+
+
+                    <th>
+                        Obtained
+                    </th>
+
+
+                    <th>
+                        Percentage
+                    </th>
+
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                ${subjectRows}
+
+            </tbody>
+
+
+        </table>
+
+
+        <!-- SUMMARY -->
+
+        <div
+            class="result-summary">
+
+
+            <div
+                class="summary-item">
+
+                <div
+                    class="summary-label">
+
+                    TOTAL MARKS
+
+                </div>
+
+
+                <div
+                    class="summary-value">
+
+                    ${student.total}
+                    /
+                    ${student.maximum}
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="summary-item">
+
+                <div
+                    class="summary-label">
+
+                    PERCENTAGE
+
+                </div>
+
+
+                <div
+                    class="summary-value">
+
+                    ${student.percentage}%
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="summary-item">
+
+                <div
+                    class="summary-label">
+
+                    GRADE
+
+                </div>
+
+
+                <div
+                    class="summary-value">
+
+                    ${escapeHtml(
+                        student.grade
+                    )}
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="summary-item">
+
+                <div
+                    class="summary-label">
+
+                    FINAL RESULT
+
+                </div>
+
+
+                <div
+                    class="summary-value"
+                    style="
+                        color:${resultColor};
+                    ">
+
+                    ${student.status}
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SIGNATURES -->
+
+        <div
+            class="signatures">
+
+
+            <div>
+
+                <div
+                    class="signature-space">
+
+                </div>
+
+
+                <div
+                    class="signature-line">
+
+                    Class Teacher
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+                <div
+                    class="signature-space">
+
+                </div>
+
+
+                <div
+                    class="signature-line">
+
+                    Examination Incharge
+
+                </div>
+
+            </div>
+
+
+
+            <div>
+
+                <div
+                    class="signature-space">
+
+                </div>
+
+
+                <div
+                    class="signature-line">
+
+                    ${escapeHtml(
+                        settings.principalName
+                        || "Principal"
+                    )}
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div
+            class="result-footer">
+
+            This is a computer-generated academic result.
+            No signature is required for digital verification.
+
+        </div>
+
+    `;
+
+
+    wrapper.classList.add(
+        "show"
+    );
+
+
+    wrapper.scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"start"
+
+    });
+
+}
+
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+function printResult(){
+
+    if(
+        !selectedStudent
+    ){
+
+        alert(
+            "Please select a result first."
+        );
+
+        return;
+
+    }
+
+
+    window.print();
+
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+function shareWhatsApp(){
+
+    if(
+        !selectedStudent
+    ){
+
+        alert(
+            "Please select a result first."
+        );
+
+        return;
+
+    }
+
+
+    const s =
+        selectedStudent;
+
+
+    const message =
+
+`*${settings.schoolName}*
+
+*Official Academic Record*
+
+Student: ${s.name}
+Roll Number: ${s.roll}
+Class: ${s.className} - ${s.section}
+Father/Guardian: ${s.father || "-"}
+
+Examination: ${s.examType}
+Academic Session: ${s.session}
+
+Total Marks: ${s.total}/${s.maximum}
+Percentage: ${s.percentage}%
+Grade: ${s.grade}
+Result: ${s.status}
+
+${settings.schoolAddress}`;
+
+
+    const url =
+        "https://wa.me/?text="
+        +
+        encodeURIComponent(
+            message
+        );
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =========================================================
+   DELETE STUDENT
+========================================================= */
+
+function deleteStudent(
+    id
+){
+
+    const student =
+        students.find(
+            s =>
+                s.id === id
+        );
+
+
+    if(
+        !student
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            `Delete the result of ${student.name}?`
+        )
+    ){
+
+        return;
+
+    }
+
+
+    students =
+        students.filter(
+            s =>
+                s.id !== id
+        );
+
+
+    saveStudents();
+
+    refreshAll();
+
+    closeResult();
+
+}
+
+
+/* =========================================================
+   CLEAR FORM
+========================================================= */
+
+function clearStudentForm(){
+
+    document
+        .getElementById(
+            "studentName"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "rollNumber"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "fatherName"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "className"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "sectionName"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "subjectRows"
+        )
+        .innerHTML = "";
+
+
+    createDefaultSubjects();
+
+
+    closeResult();
+
+}
+
+
+/* =========================================================
+   CLOSE RESULT
+========================================================= */
+
+function closeResult(){
+
+    document
+        .getElementById(
+            "resultWrapper"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
+    selectedStudent =
+        null;
+
+}
+
+
+/* =========================================================
+   DEMO DATA
+========================================================= */
+
+function loadDemoData(){
+
+    if(
+        students.length > 0
+    ){
+
+        if(
+            !confirm(
+                "You already have results. Add demo data anyway?"
+            )
+        ){
+
+            return;
+
+        }
+
+    }
+
+
+    const demo = [
+
+
+        {
+
+            id:
+                "demo-1",
+
+            name:
+                "Ali Ahmed",
+
+            roll:
+                "101",
+
+            father:
+                "Muhammad Ahmed",
+
+            className:
+                "10",
+
+            section:
+                "A",
+
+            session:
+                "2026-27",
+
+            examType:
+                "Annual Examination",
+
+            subjects:[
+
+                {
+                    subject:
+                        "English",
+
+                    obtained:
+                        86,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Mathematics",
+
+                    obtained:
+                        92,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Science",
+
+                    obtained:
+                        88,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Computer",
+
+                    obtained:
+                        95,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Social Studies",
+
+                    obtained:
+                        81,
+
+                    maximum:
+                        100
+                }
+
+            ]
+
+        },
+
+
+        {
+
+            id:
+                "demo-2",
+
+            name:
+                "Sara Khan",
+
+            roll:
+                "102",
+
+            father:
+                "Imran Khan",
+
+            className:
+                "10",
+
+            section:
+                "A",
+
+            session:
+                "2026-27",
+
+            examType:
+                "Annual Examination",
+
+            subjects:[
+
+                {
+                    subject:
+                        "English",
+
+                    obtained:
+                        78,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Mathematics",
+
+                    obtained:
+                        85,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Science",
+
+                    obtained:
+                        80,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Computer",
+
+                    obtained:
+                        91,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Social Studies",
+
+                    obtained:
+                        76,
+
+                    maximum:
+                        100
+                }
+
+            ]
+
+        },
+
+
+        {
+
+            id:
+                "demo-3",
+
+            name:
+                "Hamza Ali",
+
+            roll:
+                "201",
+
+            father:
+                "Rashid Ali",
+
+            className:
+                "9",
+
+            section:
+                "B",
+
+            session:
+                "2026-27",
+
+            examType:
+                "Annual Examination",
+
+            subjects:[
+
+                {
+                    subject:
+                        "English",
+
+                    obtained:
+                        70,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Mathematics",
+
+                    obtained:
+                        55,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Science",
+
+                    obtained:
+                        68,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Computer",
+
+                    obtained:
+                        82,
+
+                    maximum:
+                        100
+                },
+
+                {
+                    subject:
+                        "Social Studies",
+
+                    obtained:
+                        74,
+
+                    maximum:
+                        100
+                }
+
+            ]
+
+        }
+
+    ];
+
+
+    demo.forEach(
+        student => {
+
+            const result =
+                calculateResult(
+                    student.subjects
+                );
+
+
+            student.total =
+                result.total;
+
+
+            student.maximum =
+                result.maximum;
+
+
+            student.percentage =
+                result.percentage;
+
+
+            student.grade =
+                result.grade;
+
+
+            student.status =
+                result.status;
+
+
+            student.createdAt =
+                new Date()
+                .toISOString();
+
+
+            students.push(
+                student
+            );
+
+        }
+    );
+
+
+    saveStudents();
+
+    refreshAll();
+
+
+    alert(
+        "Demo data loaded successfully."
+    );
+
+}
+
+
+/* =========================================================
+   EXPORT BACKUP
+========================================================= */
+
+function exportData(){
+
+    const backup = {
+
+        version:
+            2,
+
+        exportedAt:
+            new Date()
+            .toISOString(),
+
+        settings,
+
+        students
+
+    };
+
+
+    const blob =
+        new Blob(
+            [
+                JSON.stringify(
+                    backup,
+                    null,
+                    2
+                )
+            ],
+            {
+                type:
+                    "application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const a =
+        document.createElement(
+            "a"
+        );
+
+
+    a.href =
+        url;
+
+
+    a.download =
+        `agahi-school-results-${
+            new Date()
+            .toISOString()
+            .slice(0,10)
+        }.json`;
+
+
+    document
+        .body
+        .appendChild(a);
+
+
+    a.click();
+
+
+    a.remove();
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+/* =========================================================
+   IMPORT BACKUP
+========================================================= */
+
+function importData(
+    event
+){
+
+    const file =
+        event.target.files[0];
+
+
+    if(
+        !file
+    ){
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(e){
+
+            try{
+
+                const backup =
+                    JSON.parse(
+                        e.target.result
+                    );
+
+
+                if(
+                    !backup.students
+                    ||
+                    !Array.isArray(
+                        backup.students
+                    )
+                ){
+
+                    throw new Error(
+                        "Invalid backup file."
+                    );
+
+                }
+
+
+                if(
+                    !confirm(
+                        "Importing this backup will replace your current data. Continue?"
+                    )
+                ){
+
+                    return;
+
+                }
+
+
+                students =
+                    backup.students;
+
+
+                if(
+                    backup.settings
+                ){
+
+                    settings =
+                        backup.settings;
+
+
+                    localStorage.setItem(
+                        SETTINGS_KEY,
+                        JSON.stringify(
+                            settings
+                        )
+                    );
+
+
+                    loadSettings();
+
+                }
+
+
+                saveStudents();
+
+                refreshAll();
+
+
+                alert(
+                    "Backup imported successfully."
+                );
+
+
+            }
+            catch(error){
+
+                alert(
+                    "Could not import backup: "
+                    +
+                    error.message
+                );
+
+            }
+
+        };
+
+
+    reader.readAsText(
+        file
+    );
+
+
+    event.target.value = "";
+
+}
+
+
+/* =========================================================
+   DELETE ALL DATA
+========================================================= */
+
+function deleteAllData(){
+
+    const confirmation =
+        prompt(
+            "Type DELETE to permanently remove all student results:"
+        );
+
+
+    if(
+        confirmation !== "DELETE"
+    ){
+
+        return;
+
+    }
+
+
+    students = [];
+
+
+    saveStudents();
+
+    refreshAll();
+
+    closeResult();
+
+
+    alert(
+        "All student results have been deleted."
+    );
+
+}
+
+
+/* =========================================================
+   HTML SECURITY
+========================================================= */
+
+function escapeHtml(
+    value
+){
+
+    return String(
+        value ?? ""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+function escapeAttr(
+    value
+){
+
+    return escapeHtml(
+        value
+    );
+
+}
+
+</script>
+
+</body>
+</html>
