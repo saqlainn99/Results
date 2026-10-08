@@ -866,650 +866,49 @@ tbody tr:hover td{
 
 
 /* =========================================================
-   PROFESSIONAL DMC
+   PROFESSIONAL DMC — REFERENCE PDF MATCH
 ========================================================= */
-
-.result-card{
-
-    width:210mm;
-
-    max-width:100%;
-
-    margin:0 auto;
-
-    background:white;
-
-    border:
-        1px solid #cbd5e1;
-
-    padding:12mm;
-
-    box-shadow:
-        0 12px 35px
-        rgba(15,39,71,.12);
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-
-/* Decorative border */
-
-.result-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:5mm;
-
-    border:
-        1px solid #d9a441;
-
-    pointer-events:none;
-
-}
-
-
-/* =========================================================
-   DMC HEADER - CENTERED
-========================================================= */
-
-.school-header{
-
-    text-align:center;
-
-    padding:15px 10px 17px;
-
-    margin-bottom:18px;
-
-    border-bottom:
-        3px solid var(--primary);
-
-    background:
-        linear-gradient(
-            135deg,
-            #eff6ff,
-            #ffffff
-        );
-
-    border-radius:
-        10px 10px 0 0;
-
-    position:relative;
-}
-
-
-.school-logo{
-
-    width:82px;
-
-    height:82px;
-
-    object-fit:contain;
-
-    display:block;
-
-    margin:0 auto 10px;
-
-    border-radius:50%;
-
-    border:
-        3px solid var(--primary);
-
-    padding:4px;
-
-    background:white;
-
-}
-
-
-.school-name{
-
-    font-size:26px;
-
-    font-weight:800;
-
-    color:#0f3d75;
-
-    text-transform:uppercase;
-
-    letter-spacing:.8px;
-
-    line-height:1.25;
-}
-
-
-.school-address{
-
-    color:#475569;
-
-    font-size:13px;
-
-    margin-top:5px;
-
-    font-weight:500;
-}
-
-
-.official-record{
-
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:6px 16px;
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            #3b82f6
-        );
-
-    color:white;
-
-    font-size:10px;
-
-    font-weight:800;
-
-    text-transform:uppercase;
-
-    letter-spacing:1.2px;
-}
-
-
-/* =========================================================
-   RESULT TITLE
-========================================================= */
-
-.result-title{
-
-    text-align:center;
-
-    font-size:20px;
-
-    font-weight:800;
-
-    color:var(--secondary);
-
-    margin:16px 0;
-
-    text-transform:uppercase;
-}
-
-
-.result-session{
-
-    display:inline-block;
-
-    margin-top:5px;
-
-    font-size:12px;
-
-    font-weight:500;
-
-    color:var(--muted);
-
-    text-transform:none;
-}
-
-
-/* =========================================================
-   STUDENT INFORMATION
-========================================================= */
-
-.student-info{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    border:
-        1px solid #b8c7d9;
-
-    border-radius:8px;
-
-    overflow:hidden;
-
-    margin-bottom:17px;
-}
-
-
-.info-item{
-
-    padding:9px 11px;
-
-    border-bottom:
-        1px solid #d9e2ef;
-
-    background:#fff;
-}
-
-
-.info-item:nth-child(odd){
-
-    border-right:
-        1px solid #d9e2ef;
-}
-
-
-.info-label{
-
-    font-size:9px;
-
-    color:#64748b;
-
-    text-transform:uppercase;
-
-    letter-spacing:.6px;
-
-    font-weight:700;
-}
-
-
-.info-value{
-
-    font-weight:700;
-
-    color:var(--secondary);
-
-    margin-top:4px;
-}
-
-
-/* =========================================================
-   MARKS TABLE
-========================================================= */
-
-.marks-table{
-
-    width:100%;
-
-    border-collapse:
-        collapse;
-}
-
-
-.marks-table th,
-.marks-table td{
-
-    border:
-        1px solid #b8c7d9;
-
-    padding:8px;
-
-    font-size:12px;
-}
-
-
-.marks-table th{
-
-    background:
-        linear-gradient(
-            135deg,
-            #eaf2ff,
-            #dceaff
-        );
-
-    color:
-        var(--secondary);
-
-    text-align:center;
-}
-
-
-.marks-table td{
-
-    text-align:center;
-}
-
-
-.marks-table td:nth-child(2){
-
-    text-align:left;
-
-    font-weight:600;
-}
-
-
-/* =========================================================
-   RESULT SUMMARY
-========================================================= */
-
-.result-summary{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    border:
-        1px solid #b8c7d9;
-
-    margin-top:17px;
-
-    border-radius:8px;
-
-    overflow:hidden;
-}
-
-
-.summary-item{
-
-    text-align:center;
-
-    padding:11px 5px;
-
-    border-right:
-        1px solid #b8c7d9;
-
-    background:#fafcff;
-}
-
-
-.summary-item:last-child{
-
-    border-right:0;
-}
-
-
-.summary-label{
-
-    font-size:9px;
-
-    color:#64748b;
-
-    font-weight:700;
-
-    letter-spacing:.5px;
-}
-
-
-.summary-value{
-
-    font-size:18px;
-
-    font-weight:800;
-
-    color:var(--secondary);
-
-    margin-top:4px;
-}
-
-
-/* =========================================================
-   SIGNATURES
-========================================================= */
-
-.signatures{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:35px;
-
-    margin-top:50px;
-
-    text-align:center;
-}
-
-
-.signature-space{
-
-    min-height:25px;
-}
-
-
-.signature-line{
-
-    border-top:
-        1px solid #334155;
-
-    padding-top:7px;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    color:var(--secondary);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.result-footer{
-
-    margin-top:22px;
-
-    padding-top:10px;
-
-    border-top:
-        1px solid #d9e2ef;
-
-    text-align:center;
-
-    font-size:9px;
-
-    color:#64748b;
-}
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-.settings-note{
-
-    background:
-        var(--gold-light);
-
-    border-left:
-        4px solid var(--gold);
-
-    padding:12px;
-
-    border-radius:7px;
-
-    color:#785719;
-
-    font-size:13px;
-
-    margin-bottom:18px;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-.mobile-menu{
-
-    display:none;
-
-    background:transparent;
-
-    color:white;
-
-    border:0;
-
-    font-size:23px;
-}
-
-
-@media(max-width:1000px){
-
-    .dashboard-grid{
-
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-
-    .form-grid-3{
-
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-
-    .sidebar{
-
-        position:fixed;
-
-        left:-270px;
-
-        top:72px;
-
-        bottom:0;
-
-        z-index:150;
-
-        transition:.25s;
-
-        box-shadow:
-            5px 0 20px
-            rgba(0,0,0,.1);
-    }
-
-
-    .sidebar.open{
-
-        left:0;
-    }
-
-
-    .mobile-menu{
-
-        display:block;
-    }
-
-
-    .main{
-
-        padding:20px;
-    }
-
-}
-
-
-@media(max-width:700px){
-
-    .dashboard-grid{
-
-        grid-template-columns:1fr;
-    }
-
-
-    .form-grid,
-    .form-grid-3{
-
-        grid-template-columns:1fr;
-    }
-
-
-    .subject-row{
-
-        grid-template-columns:
-            1fr 1fr 1fr auto;
-    }
-
-
-    .result-card{
-
-        padding:8mm;
-    }
-
-
-    .result-summary{
-
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-
-    .summary-item:nth-child(2){
-
-        border-right:0;
-    }
-
-
-    .summary-item{
-
-        border-bottom:
-            1px solid #b8c7d9;
-    }
-
-}
-
-
-@media(max-width:550px){
-
-    .topbar{
-
-        padding:0 12px;
-    }
-
-
-    .brand span{
-
-        display:none;
-    }
-
-
-    .top-actions{
-
-        display:none;
-    }
-
-
-    .main{
-
-        padding:15px;
-    }
-
-
-    .student-info{
-
-        grid-template-columns:1fr;
-    }
-
-
-    .info-item:nth-child(odd){
-
-        border-right:0;
-    }
-
-
-    .signatures{
-
-        grid-template-columns:1fr;
-
-        gap:35px;
-    }
-
-
-    .school-name{
-
-        font-size:21px;
-    }
-
-
-    .result-title{
-
-        font-size:17px;
-    }
-
-}
-
+.result-wrapper{background:#eef2f7;padding:18px 8px 28px;overflow:auto}
+.result-actions{display:flex;justify-content:flex-end;gap:8px;margin-bottom:14px}
+.result-card{position:relative;width:210mm;min-height:297mm;max-width:none;margin:0 auto;background:#fff;color:#111;box-sizing:border-box;padding:8mm 7.5mm 10mm;overflow:hidden;font-family:"Times New Roman",Georgia,serif;border:0;box-shadow:0 8px 28px rgba(15,39,71,.16)}
+.result-card::before{content:"";position:absolute;z-index:0;left:0;top:0;width:72mm;height:56mm;background:#4f86c5;clip-path:polygon(0 0,100% 0,73% 18%,62% 27%,50% 34%,37% 40%,27% 48%,20% 61%,14% 75%,7% 89%,0 100%)}
+.result-card::after{content:"";position:absolute;z-index:0;right:0;bottom:0;width:63mm;height:55mm;background:#4f86c5;clip-path:polygon(100% 0,100% 100%,0 100%,21% 90%,39% 82%,51% 69%,63% 53%,78% 37%,88% 20%)}
+.dmc-content{position:relative;z-index:1}
+.dmc-title{width:72%;margin:5mm auto 8mm;border:2px solid #2d5077;padding:5px 10px;text-align:center;font-size:28px;line-height:1.15;font-weight:500;background:#fff}
+.dmc-location{width:52%;margin:0 auto 5mm;padding:6px 10px;background:#568dca;text-align:center;font-size:18px;font-weight:700}
+.dmc-top{display:grid;grid-template-columns:1fr 1fr 42mm;gap:7mm;align-items:start;margin-top:2mm}
+.dmc-info-table{width:100%;border-collapse:collapse;font-size:12px}
+.dmc-info-table td{border:1px solid #222;height:18px;padding:1px 5px}
+.dmc-info-table td:first-child{background:#c8dcef;font-weight:700;width:50%}
+.dmc-term{margin-top:16mm;width:55mm;margin-left:auto;margin-right:auto;text-align:center;font-size:12px}
+.dmc-term div:first-child{border:1px solid #222;background:#fff;font-weight:700;padding:2px}
+.dmc-term div:last-child{border:1px solid #222;border-top:0;background:#c8dcef;padding:2px}
+.dmc-logo{width:37mm;height:37mm;border:2px solid #2d638f;display:flex;align-items:center;justify-content:center;margin-left:auto;background:#fff;overflow:hidden}
+.dmc-logo img{width:100%;height:100%;object-fit:contain}
+.dmc-profile{width:44%;margin-top:4mm}
+.dmc-section-title{font-size:14px;font-weight:700;text-align:center;border-bottom:2px solid #222;padding-bottom:2px;margin-bottom:3mm}
+.dmc-profile-table{width:100%;border-collapse:collapse;font-size:13px}
+.dmc-profile-table td{border:1px solid #222;height:22px;padding:3px 6px}
+.dmc-profile-table td:first-child{background:#c8dcef;width:48%;font-weight:700}
+.dmc-performance{margin-top:6mm;width:34%;border:1px solid #555;background:#c8dcef;text-align:center;padding:3px 5px;font-size:10px;font-weight:700;text-transform:uppercase}
+.dmc-marks{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px;margin-top:3mm}
+.dmc-marks th,.dmc-marks td{border:1px solid #222;text-align:center;height:21px;padding:2px 4px}
+.dmc-marks th{background:#c8dcef;font-weight:700}
+.dmc-marks th:first-child,.dmc-marks td:first-child{width:27%;text-align:left;padding-left:9px}
+.dmc-marks td:first-child{background:#c8dcef;font-weight:700}
+.dmc-marks th:nth-child(2){width:19%}.dmc-marks th:nth-child(3){width:19%}.dmc-marks th:nth-child(4){width:20%}.dmc-marks th:nth-child(5){width:15%}
+.dmc-summary-row{display:grid;grid-template-columns:1.45fr 1fr;gap:18mm;margin-top:2mm;align-items:start}
+.dmc-summary{display:grid;grid-template-columns:1fr 1fr;border-collapse:collapse}
+.dmc-summary div{border:1px solid #222;min-height:21px;padding:3px 5px;font-size:12px}
+.dmc-summary .label{font-weight:700;background:#fff;text-align:center}.dmc-summary .value{text-align:center}
+.dmc-obtained{display:grid;grid-template-columns:1fr 1.2fr;font-size:12px}
+.dmc-obtained div{border:1px solid #222;padding:3px 5px;min-height:21px}.dmc-obtained div:first-child{font-weight:700;text-align:center}
+.dmc-lower{display:grid;grid-template-columns:1fr 1fr;gap:34mm;margin-top:2mm}
+.dmc-grading{width:76%}.dmc-grading-title{width:60%;margin:0 auto 2mm;border:1px solid #222;text-align:center;padding:3px;font-size:11px;font-weight:700}.dmc-grading table{width:100%;border-collapse:collapse;font-size:10px}.dmc-grading td{border:1px solid #222;padding:2px 4px;height:16px;text-align:center}.dmc-grading td:first-child{background:#c8dcef;text-align:left}.dmc-percent{width:70%;margin-left:auto}.dmc-percent-title{border:1px solid #222;text-align:center;font-size:12px;font-weight:700;padding:4px}.dmc-percent-value{border:1px solid #222;border-top:0;text-align:center;min-height:28px;padding:5px;font-size:15px;font-weight:700}
+.dmc-status{margin-top:12mm;width:46%;margin-left:auto;margin-right:4mm;border:1px solid #222;min-height:28px;text-align:center;padding:5px;font-size:13px;font-weight:700}
+.dmc-controller{margin-top:8mm;margin-left:10%;width:38%;text-align:center;font-size:14px;font-weight:700}.dmc-controller-line{margin-top:10mm;border-top:1px solid #222}.dmc-footer{font-size:8px;text-align:center;margin-top:5mm;color:#555}
+@media(max-width:900px){.result-card{transform-origin:top left}.dmc-title{font-size:23px}.dmc-top{gap:3mm}.dmc-lower{gap:12mm}}
+@media print{body{background:#fff}.topbar,.sidebar,.page-header,.result-actions,.no-print,.modal{display:none!important}.layout,.main{display:block!important;padding:0!important;margin:0!important}.page{display:none!important}#adminPage{display:block!important}#adminPage>*:not(.result-wrapper){display:none!important}.result-wrapper{display:block!important;padding:0!important;margin:0!important;background:#fff;overflow:visible}.result-card{width:210mm;min-height:297mm;margin:0;padding:8mm 7.5mm 10mm;box-shadow:none;border:0}.dmc-title,.dmc-location,.dmc-marks th,.dmc-marks td:first-child,.dmc-profile-table td:first-child,.dmc-info-table td:first-child,.dmc-term div:last-child,.dmc-performance,.dmc-grading td:first-child{ -webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4 portrait;margin:0}}
 
 /* =========================================================
    PRINT
@@ -3303,51 +2702,14 @@ function calculateResult(
         0;
 
 
-    let grade = "F";
+    let grade = "E";
 
-
-    if(
-        percentage >= 90
-    ){
-
-        grade = "A+";
-
-    }
-    else if(
-        percentage >= 80
-    ){
-
-        grade = "A";
-
-    }
-    else if(
-        percentage >= 70
-    ){
-
-        grade = "B";
-
-    }
-    else if(
-        percentage >= 60
-    ){
-
-        grade = "C";
-
-    }
-    else if(
-        percentage >= 50
-    ){
-
-        grade = "D";
-
-    }
-    else if(
-        percentage >= 40
-    ){
-
-        grade = "E";
-
-    }
+    if(percentage >= 90) grade = "A+";
+    else if(percentage >= 80) grade = "A";
+    else if(percentage >= 70) grade = "B+";
+    else if(percentage >= 60) grade = "B";
+    else if(percentage >= 50) grade = "C";
+    else if(percentage >= 40) grade = "D";
 
 
     if(
@@ -3828,583 +3190,105 @@ function showLatestResult(){
    GENERATE DMC
 ========================================================= */
 
-function showResult(
-    student
-){
+function showResult(student){
+    selectedStudent = student;
+    const wrapper = document.getElementById("resultWrapper");
+    const card = document.getElementById("resultCard");
 
-    selectedStudent =
-        student;
+    const logo = settings.schoolLogo
+        ? `<div class="dmc-logo"><img src="${escapeAttr(settings.schoolLogo)}" alt="School Logo" onerror="this.style.display='none'"></div>`
+        : `<div class="dmc-logo"></div>`;
 
+    const issueDate = student.createdAt
+        ? new Date(student.createdAt).toLocaleDateString("en-GB")
+        : new Date().toLocaleDateString("en-GB");
 
-    const wrapper =
-        document
-        .getElementById(
-            "resultWrapper"
-        );
+    const subjectRows = (student.subjects || []).map(subject => {
+        const maximum = Number(subject.maximum) || 0;
+        const obtained = Number(subject.obtained) || 0;
+        const percentage = maximum > 0 ? (obtained / maximum) * 100 : 0;
+        const minimum = Math.ceil(maximum * 0.33);
+        const status = percentage >= 40 ? "PASS" : "FAIL";
+        return `<tr>
+            <td>${escapeHtml(subject.subject || "-")}</td>
+            <td>${maximum}</td>
+            <td>${minimum}</td>
+            <td>${obtained}</td>
+            <td>${status}</td>
+        </tr>`;
+    }).join("");
 
-
-    const card =
-        document
-        .getElementById(
-            "resultCard"
-        );
-
-
-    let logo = "";
-
-
-    if(
-        settings.schoolLogo
-    ){
-
-        logo = `
-
-            <img
-                class="school-logo"
-                src="${escapeAttr(
-                    settings.schoolLogo
-                )}"
-                alt="School Logo"
-                onerror="
-                    this.style.display='none'
-                ">
-
-        `;
-
-    }
-
-
-    const subjectRows =
-        student.subjects
-        .map(
-            (
-                subject,
-                index
-            ) => {
-
-                const percentage =
-                    subject.maximum > 0
-
-                    ?
-
-                    (
-                        subject.obtained
-                        /
-                        subject.maximum
-                    )
-                    * 100
-
-                    :
-
-                    0;
-
-
-                const status =
-                    percentage >= 40
-                    ? "PASS"
-                    : "FAIL";
-
-
-                return `
-
-                    <tr>
-
-                        <td>
-
-                            ${index + 1}
-
-                        </td>
-
-
-                        <td>
-
-                            ${escapeHtml(
-                                subject.subject
-                            )}
-
-                        </td>
-
-
-                        <td>
-
-                            ${subject.maximum}
-
-                        </td>
-
-
-                        <td>
-
-                            ${subject.obtained}
-
-                        </td>
-
-
-                        <td>
-
-                            ${percentage.toFixed(
-                                1
-                            )}%
-
-                        </td>
-
-
-                        <td>
-
-                            <span
-                                class="badge ${
-                                    status === "PASS"
-                                    ? "badge-success"
-                                    : "badge-danger"
-                                }">
-
-                                ${status}
-
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-                `;
-
-            }
-        )
-        .join("");
-
-
-    const resultColor =
-        student.status === "PASS"
-        ? "#15803d"
-        : "#dc2626";
-
+    const passMarks = Math.ceil((Number(student.maximum) || 0) * 0.40);
+    const resultStatus = student.status === "PASS" ? "PASS" : "FAIL";
+    const resultColor = resultStatus === "PASS" ? "#176b35" : "#b42318";
 
     card.innerHTML = `
+      <div class="dmc-content">
+        <div class="dmc-title">${escapeHtml(settings.schoolName || "Agahi Group of Schools")}</div>
+        <div class="dmc-location">${escapeHtml(settings.schoolAddress || "SARIAB ROAD QUETTA")}</div>
 
-        <!-- DMC HEADER -->
-
-        <div
-            class="school-header">
-
-            ${logo}
-
-
-            <div
-                class="school-name">
-
-                ${escapeHtml(
-                    settings.schoolName
-                )}
-
-            </div>
-
-
-            <div
-                class="school-address">
-
-                ${escapeHtml(
-                    settings.schoolAddress
-                )}
-
-            </div>
-
-
-            <div
-                class="official-record">
-
-                Official Academic Record
-
-            </div>
-
+        <div class="dmc-top">
+          <table class="dmc-info-table">
+            <tr><td>Session</td><td>${escapeHtml(student.session || "-")}</td></tr>
+            <tr><td>Roll Number</td><td>${escapeHtml(student.roll || "-")}</td></tr>
+            <tr><td>Class</td><td>${escapeHtml(student.className || "-")}</td></tr>
+          </table>
+          <div class="dmc-term">
+            <div>TERM</div><div>${escapeHtml(student.examType || "Mid Term")}</div>
+          </div>
+          ${logo}
         </div>
 
-
-        <!-- EXAMINATION TITLE -->
-
-        <div
-            class="result-title">
-
-            ${escapeHtml(
-                student.examType
-            )}
-
-
-            <div
-                class="result-session">
-
-                Academic Session:
-                ${escapeHtml(
-                    student.session
-                )}
-
-            </div>
-
+        <div class="dmc-profile">
+          <div class="dmc-section-title">Student Profile</div>
+          <table class="dmc-profile-table">
+            <tr><td>Name of Student</td><td>${escapeHtml(student.name || "-")}</td></tr>
+            <tr><td>Father Name</td><td>${escapeHtml(student.father || "-")}</td></tr>
+            <tr><td>Date of Issue</td><td>${issueDate}</td></tr>
+          </table>
         </div>
 
-
-        <!-- STUDENT INFORMATION -->
-
-        <div
-            class="student-info">
-
-
-            <div
-                class="info-item">
-
-                <div
-                    class="info-label">
-
-                    Student Name
-
-                </div>
-
-
-                <div
-                    class="info-value">
-
-                    ${escapeHtml(
-                        student.name
-                    )}
-
-                </div>
-
-            </div>
-
-
-
-            <div
-                class="info-item">
-
-                <div
-                    class="info-label">
-
-                    Roll Number
-
-                </div>
-
-
-                <div
-                    class="info-value">
-
-                    ${escapeHtml(
-                        student.roll
-                    )}
-
-                </div>
-
-            </div>
-
-
-
-            <div
-                class="info-item">
-
-                <div
-                    class="info-label">
-
-                    Father / Guardian
-
-                </div>
-
-
-                <div
-                    class="info-value">
-
-                    ${escapeHtml(
-                        student.father
-                        || "-"
-                    )}
-
-                </div>
-
-            </div>
-
-
-
-            <div
-                class="info-item">
-
-                <div
-                    class="info-label">
-
-                    Class / Section
-
-                </div>
-
-
-                <div
-                    class="info-value">
-
-                    ${escapeHtml(
-                        student.className
-                    )}
-
-                    -
-
-                    ${escapeHtml(
-                        student.section
-                    )}
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- MARKS -->
-
-        <table
-            class="marks-table">
-
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        #
-                    </th>
-
-
-                    <th>
-                        Subject
-                    </th>
-
-
-                    <th>
-                        Maximum
-                    </th>
-
-
-                    <th>
-                        Obtained
-                    </th>
-
-
-                    <th>
-                        Percentage
-                    </th>
-
-
-                    <th>
-                        Status
-                    </th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                ${subjectRows}
-
-            </tbody>
-
-
+        <div class="dmc-performance">Performance in Subjects</div>
+        <table class="dmc-marks">
+          <thead><tr><th>Subjects</th><th>Maximum</th><th>Minimum</th><th>Obtained Marks</th><th>Status</th></tr></thead>
+          <tbody>${subjectRows}</tbody>
         </table>
 
-
-        <!-- SUMMARY -->
-
-        <div
-            class="result-summary">
-
-
-            <div
-                class="summary-item">
-
-                <div
-                    class="summary-label">
-
-                    TOTAL MARKS
-
-                </div>
-
-
-                <div
-                    class="summary-value">
-
-                    ${student.total}
-                    /
-                    ${student.maximum}
-
-                </div>
-
-            </div>
-
-
-
-            <div
-                class="summary-item">
-
-                <div
-                    class="summary-label">
-
-                    PERCENTAGE
-
-                </div>
-
-
-                <div
-                    class="summary-value">
-
-                    ${student.percentage}%
-
-                </div>
-
-            </div>
-
-
-
-            <div
-                class="summary-item">
-
-                <div
-                    class="summary-label">
-
-                    GRADE
-
-                </div>
-
-
-                <div
-                    class="summary-value">
-
-                    ${escapeHtml(
-                        student.grade
-                    )}
-
-                </div>
-
-            </div>
-
-
-
-            <div
-                class="summary-item">
-
-                <div
-                    class="summary-label">
-
-                    FINAL RESULT
-
-                </div>
-
-
-                <div
-                    class="summary-value"
-                    style="
-                        color:${resultColor};
-                    ">
-
-                    ${student.status}
-
-                </div>
-
-            </div>
-
-
+        <div class="dmc-summary-row">
+          <div class="dmc-summary">
+            <div class="label">Total. Marks</div><div class="value">${student.maximum}</div>
+            <div class="label">Pass. Marks</div><div class="value">${passMarks}</div>
+          </div>
+          <div class="dmc-obtained"><div>Marks Obtained</div><div>${student.total}</div></div>
         </div>
 
-
-        <!-- SIGNATURES -->
-
-        <div
-            class="signatures">
-
-
-            <div>
-
-                <div
-                    class="signature-space">
-
-                </div>
-
-
-                <div
-                    class="signature-line">
-
-                    Class Teacher
-
-                </div>
-
-            </div>
-
-
-
-            <div>
-
-                <div
-                    class="signature-space">
-
-                </div>
-
-
-                <div
-                    class="signature-line">
-
-                    Examination Incharge
-
-                </div>
-
-            </div>
-
-
-
-            <div>
-
-                <div
-                    class="signature-space">
-
-                </div>
-
-
-                <div
-                    class="signature-line">
-
-                    ${escapeHtml(
-                        settings.principalName
-                        || "Principal"
-                    )}
-
-                </div>
-
-            </div>
-
-
+        <div class="dmc-lower">
+          <div class="dmc-grading">
+            <div class="dmc-grading-title">Grading Chart</div>
+            <table>
+              <tr><td>90% and above</td><td>A+</td><td>Outstanding</td></tr>
+              <tr><td>80% to 89%</td><td>A</td><td>Excellent</td></tr>
+              <tr><td>70% to 79%</td><td>B+</td><td>Very Good</td></tr>
+              <tr><td>60% to 69%</td><td>B</td><td>Good</td></tr>
+              <tr><td>50% to 59%</td><td>C</td><td>Fair</td></tr>
+              <tr><td>40% to 49%</td><td>D</td><td>Average</td></tr>
+              <tr><td>below 40%</td><td>E</td><td>Fail</td></tr>
+            </table>
+          </div>
+          <div class="dmc-percent">
+            <div class="dmc-percent-title">Percentage%</div>
+            <div class="dmc-percent-value">${Number(student.percentage || 0).toFixed(2)}%</div>
+          </div>
         </div>
 
+        <div class="dmc-status" style="color:${resultColor}">Final Result: ${resultStatus}</div>
+        <div class="dmc-controller">Controller Examination<div class="dmc-controller-line"></div></div>
+        <div class="dmc-footer">This is a computer-generated academic result.</div>
+      </div>`;
 
-        <!-- FOOTER -->
-
-        <div
-            class="result-footer">
-
-            This is a computer-generated academic result.
-            No signature is required for digital verification.
-
-        </div>
-
-    `;
-
-
-    wrapper.classList.add(
-        "show"
-    );
-
-
-    wrapper.scrollIntoView({
-
-        behavior:"smooth",
-
-        block:"start"
-
-    });
-
+    wrapper.classList.add("show");
+    wrapper.scrollIntoView({behavior:"smooth",block:"start"});
 }
-
 
 /* =========================================================
    PRINT
