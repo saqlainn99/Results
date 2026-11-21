@@ -3,873 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Agahi Group of Schools - Result Management System</title>
-
 <style>
-
-/* =========================================================
-   PROFESSIONAL COLOR SYSTEM
-========================================================= */
-
-:root{
-    --primary:#155eef;
-    --primary-dark:#0b4bc4;
-    --primary-light:#eaf2ff;
-
-    --secondary:#0f2747;
-    --secondary-light:#173b68;
-
-    --gold:#d9a441;
-    --gold-light:#fff7df;
-
-    --success:#15803d;
-    --success-light:#dcfce7;
-
-    --danger:#dc2626;
-    --danger-light:#fee2e2;
-
-    --warning:#d97706;
-
-    --background:#f4f7fb;
-    --card:#ffffff;
-
-    --border:#d9e2ef;
-
-    --text:#172033;
-    --muted:#64748b;
-
-    --white:#ffffff;
-
-    --shadow:
-        0 8px 30px rgba(15,39,71,.08);
-
-    --radius:14px;
-}
-
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    font-family:
-        "Segoe UI",
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background:var(--background);
-    color:var(--text);
-}
-
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-img{
-    max-width:100%;
-}
-
-
-/* =========================================================
-   TOP HEADER
-========================================================= */
-
-.topbar{
-
-    height:72px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--secondary),
-            var(--secondary-light)
-        );
-
-    color:white;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 26px;
-
-    position:sticky;
-    top:0;
-
-    z-index:100;
-
-    box-shadow:
-        0 4px 15px rgba(0,0,0,.12);
-}
-
-
-.brand{
-
-    display:flex;
-    align-items:center;
-
-    gap:12px;
-
-    font-size:19px;
-    font-weight:700;
-}
-
-
-.brand-icon{
-
-    width:44px;
-    height:44px;
-
-    border-radius:12px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            #3b82f6
-        );
-
-    box-shadow:
-        0 5px 15px rgba(37,99,235,.3);
-
-    font-size:22px;
-}
-
-
-.top-actions{
-
-    display:flex;
-    align-items:center;
-
-    gap:8px;
-}
-
-
-.top-btn{
-
-    border:1px solid rgba(255,255,255,.2);
-
-    background:
-        rgba(255,255,255,.08);
-
-    color:white;
-
-    padding:9px 15px;
-
-    border-radius:8px;
-
-    transition:.2s;
-}
-
-
-.top-btn:hover{
-
-    background:
-        rgba(255,255,255,.16);
-
-}
-
-
-/* =========================================================
-   LAYOUT
-========================================================= */
-
-.layout{
-
-    display:flex;
-
-    min-height:
-        calc(100vh - 72px);
-
-}
-
-
-.sidebar{
-
-    width:250px;
-
-    background:white;
-
-    border-right:
-        1px solid var(--border);
-
-    padding:20px 13px;
-
-    flex-shrink:0;
-}
-
-
-.nav-title{
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1.5px;
-
-    font-weight:700;
-
-    padding:12px;
-
-}
-
-
-.nav-btn{
-
-    width:100%;
-
-    border:0;
-
-    background:transparent;
-
-    padding:12px 13px;
-
-    text-align:left;
-
-    border-radius:9px;
-
-    margin-bottom:4px;
-
-    color:var(--text);
-
-    font-weight:500;
-
-    transition:.2s;
-}
-
-
-.nav-btn:hover{
-
-    background:
-        var(--primary-light);
-
-    color:var(--primary);
-
-}
-
-
-.nav-btn.active{
-
-    background:
-        linear-gradient(
-            90deg,
-            #eaf2ff,
-            #f4f8ff
-        );
-
-    color:var(--primary);
-
-    font-weight:700;
-
-    border-left:
-        4px solid var(--primary);
-
-}
-
-
-.main{
-
-    flex:1;
-
-    padding:28px;
-
-    min-width:0;
-}
-
-
-.page{
-    display:none;
-}
-
-
-.page.active{
-    display:block;
-}
-
-
-.page-header{
-
-    margin-bottom:24px;
-}
-
-
-.page-header h1{
-
-    margin:0 0 7px;
-
-    font-size:30px;
-
-    color:var(--secondary);
-
-}
-
-
-.page-header p{
-
-    margin:0;
-
-    color:var(--muted);
-
-}
-
-
-/* =========================================================
-   CARDS
-========================================================= */
-
-.card{
-
-    background:var(--card);
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius);
-
-    box-shadow:
-        var(--shadow);
-
-    padding:22px;
-
-    margin-bottom:22px;
-}
-
-
-.card-title{
-
-    font-size:18px;
-
-    font-weight:700;
-
-    color:var(--secondary);
-
-    margin-bottom:18px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-}
-
-
-.card-title::before{
-
-    content:"";
-
-    width:4px;
-
-    height:20px;
-
-    border-radius:5px;
-
-    background:
-        var(--primary);
-
-}
-
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
-
-.dashboard-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:18px;
-
-    margin-bottom:24px;
-}
-
-
-.stat-card{
-
-    background:white;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius);
-
-    padding:21px;
-
-    box-shadow:
-        var(--shadow);
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-
-.stat-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:80px;
-    height:80px;
-
-    right:-25px;
-    top:-25px;
-
-    background:
-        rgba(21,94,239,.06);
-
-    border-radius:50%;
-}
-
-
-.stat-label{
-
-    color:var(--muted);
-
-    font-size:13px;
-
-    font-weight:600;
-}
-
-
-.stat-value{
-
-    color:var(--secondary);
-
-    font-size:32px;
-
-    font-weight:800;
-
-    margin-top:8px;
-
-}
-
-
-/* =========================================================
-   FORMS
-========================================================= */
-
-.form-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:16px;
-}
-
-
-.form-grid-3{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:16px;
-}
-
-
-.form-group{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:7px;
-}
-
-
-.form-group.full{
-
-    grid-column:
-        1/-1;
-}
-
-
-label{
-
-    font-size:13px;
-
-    font-weight:700;
-
-    color:#475569;
-}
-
-
-input,
-select,
-textarea{
-
-    width:100%;
-
-    border:
-        1px solid #cbd5e1;
-
-    border-radius:9px;
-
-    padding:11px 12px;
-
-    outline:none;
-
-    background:white;
-
-    color:var(--text);
-
-    transition:.2s;
-}
-
-
-input:hover,
-select:hover,
-textarea:hover{
-
-    border-color:#94a3b8;
-
-}
-
-
-input:focus,
-select:focus,
-textarea:focus{
-
-    border-color:
-        var(--primary);
-
-    box-shadow:
-        0 0 0 3px
-        rgba(21,94,239,.1);
-
-}
-
-
-textarea{
-
-    min-height:90px;
-
-    resize:vertical;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.btn{
-
-    border:0;
-
-    border-radius:9px;
-
-    padding:10px 16px;
-
-    font-weight:700;
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:7px;
-
-    transition:.2s;
-}
-
-
-.btn:hover{
-
-    transform:
-        translateY(-1px);
-
-}
-
-
-.btn-primary{
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            #3b82f6
-        );
-
-    color:white;
-
-    box-shadow:
-        0 5px 12px
-        rgba(21,94,239,.2);
-
-}
-
-
-.btn-primary:hover{
-
-    background:
-        var(--primary-dark);
-
-}
-
-
-.btn-success{
-
-    background:
-        var(--success);
-
-    color:white;
-}
-
-
-.btn-danger{
-
-    background:
-        var(--danger);
-
-    color:white;
-}
-
-
-.btn-warning{
-
-    background:
-        var(--warning);
-
-    color:white;
-}
-
-
-.btn-light{
-
-    background:#edf2f7;
-
-    color:#334155;
-}
-
-
-.btn-outline{
-
-    background:white;
-
-    color:var(--primary);
-
-    border:
-        1px solid var(--primary);
-}
-
-
-.actions{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-
-    margin-top:18px;
-}
-
-
-/* =========================================================
-   TABLES
-========================================================= */
-
-.table-wrapper{
-
-    overflow-x:auto;
-}
-
-
-table{
-
-    width:100%;
-
-    border-collapse:
-        collapse;
-}
-
-
-th,
-td{
-
-    padding:12px;
-
-    border-bottom:
-        1px solid var(--border);
-
-    text-align:left;
-
-    font-size:14px;
-}
-
-
-th{
-
-    background:
-        #f5f8fc;
-
-    font-weight:700;
-
-    color:#475569;
-
-    white-space:nowrap;
-}
-
-
-tbody tr:hover td{
-
-    background:
-        #f8fbff;
-}
-
-
-/* =========================================================
-   BADGES
-========================================================= */
-
-.badge{
-
-    display:inline-block;
-
-    padding:5px 9px;
-
-    border-radius:20px;
-
-    font-size:11px;
-
-    font-weight:800;
-}
-
-
-.badge-success{
-
-    background:
-        var(--success-light);
-
-    color:#166534;
-}
-
-
-.badge-danger{
-
-    background:
-        var(--danger-light);
-
-    color:#991b1b;
-}
-
-
-.badge-blue{
-
-    background:
-        #e00ebd;
-
-    color:#1e40af;
-}
-
-
-/* =========================================================
-   SUBJECT MARKS
-========================================================= */
-
-.subject-row{
-
-    display:grid;
-
-    grid-template-columns:
-        2fr 1fr 1fr auto;
-
-    gap:10px;
-
-    align-items:end;
-
-    margin-bottom:10px;
-}
-
-
-.subject-list-header{
-
-    display:grid;
-
-    grid-template-columns:
-        2fr 1fr 1fr auto;
-
-    gap:10px;
-
-    font-size:12px;
-
-    color:var(--muted);
-
-    font-weight:700;
-
-    margin-bottom:8px;
-}
-
-
-/* =========================================================
-   RESULT AREA
-========================================================= */
-
-.result-wrapper{
-
-    display:none;
-
-    margin-top:25px;
-}
-
-
-.result-wrapper.show{
-
-    display:block;
-}
-
-
-.result-actions{
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    gap:8px;
-
-    margin-bottom:15px;
-}
-
-
-/* =========================================================
-   PROFESSIONAL DMC — REFERENCE PDF MATCH
-========================================================= */
-.result-wrapper{background:#eef2f7;padding:18px 8px 28px;overflow:auto}
-.result-actions{display:flex;justify-content:flex-end;gap:8px;margin-bottom:14px}
+:root{--primary:#155eef;--primary-dark:#0b4bc4;--primary-light:#eaf2ff;--secondary:#0f2747;--secondary-light:#173b68;--success:#15803d;--success-light:#dcfce7;--danger:#dc2626;--danger-light:#fee2e2;--warning:#d97706;--warning-light:#fef3c7;--background:#f4f7fb;--card:#fff;--border:#d9e2ef;--text:#172033;--muted:#64748b;--shadow:0 8px 30px rgba(15,39,71,.08);--radius:14px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:var(--background);color:var(--text)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}img{max-width:100%}
+.topbar{height:72px;background:linear-gradient(135deg,var(--secondary),var(--secondary-light));color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(0,0,0,.12);gap:10px}
+.brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:700}
+.brand-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),#3b82f6);box-shadow:0 5px 15px rgba(37,99,235,.3);font-size:22px;flex-shrink:0}
+.top-actions{display:flex;gap:8px}
+.top-btn,.mobile-menu{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;padding:9px 15px;border-radius:8px;transition:.2s}
+.top-btn:hover,.mobile-menu:hover{background:rgba(255,255,255,.16)}
+.mobile-menu{display:none}
+.layout{display:flex;min-height:calc(100vh - 72px)}
+.sidebar{width:250px;background:#fff;border-right:1px solid var(--border);padding:20px 13px;flex-shrink:0}
+.nav-title{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;padding:12px}
+.nav-btn{width:100%;border:0;background:transparent;padding:12px 13px;text-align:left;border-radius:9px;margin-bottom:4px;color:var(--text);font-weight:500;transition:.2s}
+.nav-btn:hover{background:var(--primary-light);color:var(--primary)}
+.nav-btn.active{background:linear-gradient(90deg,#eaf2ff,#f4f8ff);color:var(--primary);font-weight:700;border-left:4px solid var(--primary)}
+.main{flex:1;padding:28px;min-width:0}
+.page{display:none}.page.active{display:block}
+.page-header{margin-bottom:24px}.page-header h1{margin:0 0 7px;font-size:30px;color:var(--secondary)}.page-header p{margin:0;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:22px}
+.card-title{font-size:18px;font-weight:700;color:var(--secondary);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.card-title::before{content:"";width:4px;height:20px;border-radius:5px;background:var(--primary)}
+.settings-note,.hint{color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 14px}
+.rule{background:var(--primary-light);border:1px solid #bfd4ff;border-radius:10px;padding:12px 14px;color:var(--secondary);font-size:14px;line-height:1.6;margin-bottom:16px}
+.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-bottom:24px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:21px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat-card::after{content:"";position:absolute;width:80px;height:80px;right:-25px;top:-25px;background:rgba(21,94,239,.06);border-radius:50%}
+.stat-label{color:var(--muted);font-size:13px;font-weight:600}.stat-value{color:var(--secondary);font-size:32px;font-weight:800;margin-top:8px}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.form-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.form-grid-4{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;align-items:end}
+.form-group{display:flex;flex-direction:column;gap:7px}.form-group.full{grid-column:1/-1}
+label{font-size:13px;font-weight:700;color:#475569}
+input,select,textarea{width:100%;border:1px solid #cbd5e1;border-radius:9px;padding:11px 12px;outline:none;background:#fff;color:var(--text);transition:.2s}
+input:hover,select:hover{border-color:#94a3b8}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,94,239,.1)}
+input.invalid{border-color:var(--danger);background:var(--danger-light)}
+.btn{border:0;border-radius:9px;padding:10px 16px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:.2s}
+.btn:hover{transform:translateY(-1px)}.btn-sm{padding:6px 10px;font-size:13px}
+.btn-primary{background:linear-gradient(135deg,var(--primary),#3b82f6);color:#fff;box-shadow:0 5px 12px rgba(21,94,239,.2)}.btn-primary:hover{background:var(--primary-dark)}
+.btn-success{background:var(--success);color:#fff}.btn-danger{background:var(--danger);color:#fff}.btn-light{background:#edf2f7;color:#334155}
+.btn-outline{background:#fff;color:var(--primary);border:1px solid var(--primary)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.table-wrapper{overflow-x:auto}table{width:100%;border-collapse:collapse}
+th,td{padding:12px;border-bottom:1px solid var(--border);text-align:left;font-size:14px}
+th{background:#f5f8fc;font-weight:700;color:#475569;white-space:nowrap}tbody tr:hover td{background:#f8fbff}
+td.act{white-space:nowrap}
+.badge{display:inline-block;padding:5px 9px;border-radius:20px;font-size:11px;font-weight:800}
+.badge-success{background:var(--success-light);color:#166534}.badge-danger{background:var(--danger-light);color:#991b1b}.badge-blue{background:#dbeafe;color:#1e40af}.badge-warn{background:var(--warning-light);color:#92400e}
+.subject-row,.subject-list-header{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px;align-items:end}
+.subject-row{margin-bottom:10px}.subject-list-header{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:8px}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--secondary);color:#fff;padding:12px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:.25s;z-index:300;max-width:80vw}.toast.show{opacity:1}
+.result-wrapper{display:none;margin-top:25px;background:#eef2f7;padding:18px 8px 28px;overflow:auto}.result-wrapper.show{display:block}
+.result-actions{display:flex;justify-content:flex-end;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+/* ===== DMC (unchanged design) ===== */
 .result-card{position:relative;width:210mm;min-height:297mm;max-width:none;margin:0 auto;background:#fff;color:#111;box-sizing:border-box;padding:8mm 7.5mm 10mm;overflow:hidden;font-family:"Times New Roman",Georgia,serif;border:0;box-shadow:0 8px 28px rgba(15,39,71,.16)}
 .result-card::before{content:"";position:absolute;z-index:0;left:0;top:0;width:72mm;height:56mm;background:#4f86c5;clip-path:polygon(0 0,100% 0,73% 18%,62% 27%,50% 34%,37% 40%,27% 48%,20% 61%,14% 75%,7% 89%,0 100%)}
 .result-card::after{content:"";position:absolute;z-index:0;right:0;bottom:0;width:63mm;height:55mm;background:#4f86c5;clip-path:polygon(100% 0,100% 100%,0 100%,21% 90%,39% 82%,51% 69%,63% 53%,78% 37%,88% 20%)}
@@ -877,3268 +67,466 @@ tbody tr:hover td{
 .dmc-title{width:72%;margin:5mm auto 8mm;border:2px solid #2d5077;padding:5px 10px;text-align:center;font-size:28px;line-height:1.15;font-weight:500;background:#fff}
 .dmc-location{width:52%;margin:0 auto 5mm;padding:6px 10px;background:#568dca;text-align:center;font-size:18px;font-weight:700}
 .dmc-top{display:grid;grid-template-columns:1fr 1fr 42mm;gap:7mm;align-items:start;margin-top:2mm}
-.dmc-info-table{width:100%;border-collapse:collapse;font-size:12px}
-.dmc-info-table td{border:1px solid #222;height:18px;padding:1px 5px}
-.dmc-info-table td:first-child{background:#c8dcef;font-weight:700;width:50%}
-.dmc-term{margin-top:16mm;width:55mm;margin-left:auto;margin-right:auto;text-align:center;font-size:12px}
-.dmc-term div:first-child{border:1px solid #222;background:#fff;font-weight:700;padding:2px}
-.dmc-term div:last-child{border:1px solid #222;border-top:0;background:#c8dcef;padding:2px}
-.dmc-logo{width:37mm;height:37mm;border:2px solid #2d638f;display:flex;align-items:center;justify-content:center;margin-left:auto;background:#fff;overflow:hidden}
-.dmc-logo img{width:100%;height:100%;object-fit:contain}
-.dmc-profile{width:44%;margin-top:4mm}
-.dmc-section-title{font-size:14px;font-weight:700;text-align:center;border-bottom:2px solid #222;padding-bottom:2px;margin-bottom:3mm}
-.dmc-profile-table{width:100%;border-collapse:collapse;font-size:13px}
-.dmc-profile-table td{border:1px solid #222;height:22px;padding:3px 6px}
-.dmc-profile-table td:first-child{background:#c8dcef;width:48%;font-weight:700}
+.dmc-info-table{width:100%;border-collapse:collapse;font-size:12px}.dmc-info-table td{border:1px solid #222;height:18px;padding:1px 5px}.dmc-info-table td:first-child{background:#c8dcef;font-weight:700;width:50%}
+.dmc-term{margin-top:16mm;width:55mm;margin-left:auto;margin-right:auto;text-align:center;font-size:12px}.dmc-term div:first-child{border:1px solid #222;background:#fff;font-weight:700;padding:2px}.dmc-term div:last-child{border:1px solid #222;border-top:0;background:#c8dcef;padding:2px}
+.dmc-logo{width:37mm;height:37mm;border:2px solid #2d638f;display:flex;align-items:center;justify-content:center;margin-left:auto;background:#fff;overflow:hidden}.dmc-logo img{width:100%;height:100%;object-fit:contain}
+.dmc-profile{width:44%;margin-top:4mm}.dmc-section-title{font-size:14px;font-weight:700;text-align:center;border-bottom:2px solid #222;padding-bottom:2px;margin-bottom:3mm}
+.dmc-profile-table{width:100%;border-collapse:collapse;font-size:13px}.dmc-profile-table td{border:1px solid #222;height:22px;padding:3px 6px}.dmc-profile-table td:first-child{background:#c8dcef;width:48%;font-weight:700}
 .dmc-performance{margin-top:6mm;width:34%;border:1px solid #555;background:#c8dcef;text-align:center;padding:3px 5px;font-size:10px;font-weight:700;text-transform:uppercase}
-.dmc-marks{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px;margin-top:3mm}
-.dmc-marks th,.dmc-marks td{border:1px solid #222;text-align:center;height:21px;padding:2px 4px}
-.dmc-marks th{background:#c8dcef;font-weight:700}
-.dmc-marks th:first-child,.dmc-marks td:first-child{width:27%;text-align:left;padding-left:9px}
-.dmc-marks td:first-child{background:#c8dcef;font-weight:700}
+.dmc-marks{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px;margin-top:3mm}.dmc-marks th,.dmc-marks td{border:1px solid #222;text-align:center;height:21px;padding:2px 4px}.dmc-marks th{background:#c8dcef;font-weight:700;color:#111}
+.dmc-marks th:first-child,.dmc-marks td:first-child{width:27%;text-align:left;padding-left:9px}.dmc-marks td:first-child{background:#c8dcef;font-weight:700}
 .dmc-marks th:nth-child(2){width:19%}.dmc-marks th:nth-child(3){width:19%}.dmc-marks th:nth-child(4){width:20%}.dmc-marks th:nth-child(5){width:15%}
+.dmc-marks td.failcell{color:#b42318;font-weight:700}
 .dmc-summary-row{display:grid;grid-template-columns:1.45fr 1fr;gap:18mm;margin-top:2mm;align-items:start}
-.dmc-summary{display:grid;grid-template-columns:1fr 1fr;border-collapse:collapse}
-.dmc-summary div{border:1px solid #222;min-height:21px;padding:3px 5px;font-size:12px}
-.dmc-summary .label{font-weight:700;background:#fff;text-align:center}.dmc-summary .value{text-align:center}
-.dmc-obtained{display:grid;grid-template-columns:1fr 1.2fr;font-size:12px}
-.dmc-obtained div{border:1px solid #222;padding:3px 5px;min-height:21px}.dmc-obtained div:first-child{font-weight:700;text-align:center}
+.dmc-summary{display:grid;grid-template-columns:1fr 1fr}.dmc-summary div{border:1px solid #222;min-height:21px;padding:3px 5px;font-size:12px}.dmc-summary .label{font-weight:700;background:#fff;text-align:center}.dmc-summary .value{text-align:center}
+.dmc-obtained{display:grid;grid-template-columns:1fr 1.2fr;font-size:12px}.dmc-obtained div{border:1px solid #222;padding:3px 5px;min-height:21px}.dmc-obtained div:first-child{font-weight:700;text-align:center}
 .dmc-lower{display:grid;grid-template-columns:1fr 1fr;gap:34mm;margin-top:2mm}
-.dmc-grading{width:76%}.dmc-grading-title{width:60%;margin:0 auto 2mm;border:1px solid #222;text-align:center;padding:3px;font-size:11px;font-weight:700}.dmc-grading table{width:100%;border-collapse:collapse;font-size:10px}.dmc-grading td{border:1px solid #222;padding:2px 4px;height:16px;text-align:center}.dmc-grading td:first-child{background:#c8dcef;text-align:left}.dmc-percent{width:70%;margin-left:auto}.dmc-percent-title{border:1px solid #222;text-align:center;font-size:12px;font-weight:700;padding:4px}.dmc-percent-value{border:1px solid #222;border-top:0;text-align:center;min-height:28px;padding:5px;font-size:15px;font-weight:700}
-.dmc-status{margin-top:12mm;width:46%;margin-left:auto;margin-right:4mm;border:1px solid #222;min-height:28px;text-align:center;padding:5px;font-size:13px;font-weight:700}
+.dmc-grading{width:76%}.dmc-grading-title{width:60%;margin:0 auto 2mm;border:1px solid #222;text-align:center;padding:3px;font-size:11px;font-weight:700}.dmc-grading table{width:100%;border-collapse:collapse;font-size:10px}.dmc-grading td{border:1px solid #222;padding:2px 4px;height:16px;text-align:center}.dmc-grading td:first-child{background:#c8dcef;text-align:left}
+.dmc-percent{width:70%;margin-left:auto}.dmc-percent-title{border:1px solid #222;text-align:center;font-size:12px;font-weight:700;padding:4px}.dmc-percent-value{border:1px solid #222;border-top:0;text-align:center;min-height:28px;padding:5px;font-size:15px;font-weight:700}
+.dmc-status{margin-top:12mm;width:56%;margin-left:auto;margin-right:4mm;border:1px solid #222;min-height:28px;text-align:center;padding:5px;font-size:13px;font-weight:700}.dmc-status small{display:block;font-size:10px;font-weight:400;color:#333}
 .dmc-controller{margin-top:8mm;margin-left:10%;width:38%;text-align:center;font-size:14px;font-weight:700}.dmc-controller-line{margin-top:10mm;border-top:1px solid #222}.dmc-footer{font-size:8px;text-align:center;margin-top:5mm;color:#555}
-@media(max-width:900px){.result-card{transform-origin:top left}.dmc-title{font-size:23px}.dmc-top{gap:3mm}.dmc-lower{gap:12mm}}
-@media print{body{background:#fff}.topbar,.sidebar,.page-header,.result-actions,.no-print,.modal{display:none!important}.layout,.main{display:block!important;padding:0!important;margin:0!important}.page{display:none!important}#adminPage{display:block!important}#adminPage>*:not(.result-wrapper){display:none!important}.result-wrapper{display:block!important;padding:0!important;margin:0!important;background:#fff;overflow:visible}.result-card{width:210mm;min-height:297mm;margin:0;padding:8mm 7.5mm 10mm;box-shadow:none;border:0}.dmc-title,.dmc-location,.dmc-marks th,.dmc-marks td:first-child,.dmc-profile-table td:first-child,.dmc-info-table td:first-child,.dmc-term div:last-child,.dmc-performance,.dmc-grading td:first-child{ -webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4 portrait;margin:0}}
-
-/* =========================================================
-   PRINT
-========================================================= */
-
-@media print{
-
-    body{
-
-        background:white;
-    }
-
-
-    .topbar,
-    .sidebar,
-    .page-header,
-    .result-actions,
-    .no-print,
-    .modal{
-
-        display:none !important;
-    }
-
-
-    .layout,
-    .main{
-
-        display:block;
-
-        padding:0;
-
-        margin:0;
-    }
-
-
-    .page{
-
-        display:none !important;
-    }
-
-
-    #adminPage{
-
-        display:block !important;
-    }
-
-
-    #adminPage > *:not(.result-wrapper){
-
-        display:none !important;
-    }
-
-
-    .result-wrapper{
-
-        display:block !important;
-
-        margin:0;
-    }
-
-
-    .result-card{
-
-        width:100%;
-
-        max-width:none;
-
-        box-shadow:none;
-
-        border:0;
-
-        padding:7mm;
-
-        margin:0;
-
-        min-height:270mm;
-    }
-
-
-    .result-card::before{
-
-        inset:3mm;
-
-    }
-
-
-    @page{
-
-        size:A4;
-
-        margin:7mm;
-    }
-
+@media(max-width:900px){
+ .mobile-menu{display:block}.top-actions{display:none}.brand{font-size:15px;flex:1}.main{padding:16px}
+ .sidebar{position:fixed;top:72px;left:0;bottom:0;z-index:90;transform:translateX(-100%);transition:.25s;box-shadow:6px 0 24px rgba(0,0,0,.15)}.sidebar.open{transform:none}
+ .form-grid,.form-grid-3,.filters{grid-template-columns:1fr}.subject-row,.subject-list-header{grid-template-columns:2fr 1fr 1fr auto}
 }
-
-
-/* =========================================================
-   PRINT COLOR SUPPORT
-========================================================= */
-
 @media print{
-
-    .school-header{
-
-        -webkit-print-color-adjust:exact;
-
-        print-color-adjust:exact;
-    }
-
-
-    .official-record,
-    .marks-table th{
-
-        -webkit-print-color-adjust:exact;
-
-        print-color-adjust:exact;
-    }
-
+ body{background:#fff}.topbar,.sidebar,.page-header,.result-actions,.toast{display:none!important}
+ .layout,.main{display:block!important;padding:0!important;margin:0!important}.page{display:none!important}
+ #adminPage{display:block!important}#adminPage>*:not(.result-wrapper){display:none!important}
+ .result-wrapper{display:block!important;padding:0!important;margin:0!important;background:#fff;overflow:visible}
+ .result-card{width:210mm;min-height:297mm;margin:0;padding:8mm 7.5mm 10mm;box-shadow:none;border:0}
+ .result-card,.result-card *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ @page{size:A4 portrait;margin:0}
 }
-
 </style>
 </head>
-
-
 <body>
-
-<div class="app">
-
-
-<!-- =======================================================
-     TOP BAR
-======================================================= -->
-
 <header class="topbar">
-
-    <button
-        class="mobile-menu"
-        onclick="toggleSidebar()">
-
-        ☰
-
-    </button>
-
-
-    <div class="brand">
-
-        <div class="brand-icon">
-
-            🎓
-
-        </div>
-
-        <span>
-
-            Agahi Group of Schools
-            — Result Management
-
-        </span>
-
-    </div>
-
-
-    <div class="top-actions">
-
-        <button
-            class="top-btn"
-            onclick="showPage('dashboardPage')">
-
-            Dashboard
-
-        </button>
-
-
-        <button
-            class="top-btn"
-            onclick="showPage('adminPage')">
-
-            New Result
-
-        </button>
-
-    </div>
-
+  <button class="mobile-menu" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <div class="brand"><div class="brand-icon">🎓</div><span>Agahi Group of Schools — Result Management</span></div>
+  <div class="top-actions">
+    <button class="top-btn" onclick="showPage('dashboardPage')">Dashboard</button>
+    <button class="top-btn" onclick="showPage('adminPage')">New Result</button>
+  </div>
 </header>
 
-
-
 <div class="layout">
-
-
-<!-- =======================================================
-     SIDEBAR
-======================================================= -->
-
-<aside
-    class="sidebar"
-    id="sidebar">
-
-
-    <div class="nav-title">
-
-        Main
-
-    </div>
-
-
-    <button
-        class="nav-btn active"
-        data-page="dashboardPage"
-        onclick="showPage('dashboardPage')">
-
-        📊 Dashboard
-
-    </button>
-
-
-    <button
-        class="nav-btn"
-        data-page="adminPage"
-        onclick="showPage('adminPage')">
-
-        📝 Manage Results
-
-    </button>
-
-
-    <div class="nav-title">
-
-        System
-
-    </div>
-
-
-    <button
-        class="nav-btn"
-        data-page="settingsPage"
-        onclick="showPage('settingsPage')">
-
-        ⚙️ School Settings
-
-    </button>
-
-
+<aside class="sidebar" id="sidebar">
+  <div class="nav-title">Main</div>
+  <button class="nav-btn active" data-page="dashboardPage" onclick="showPage('dashboardPage')">📊 Dashboard</button>
+  <button class="nav-btn" data-page="adminPage" onclick="showPage('adminPage')">📝 Manage Results</button>
+  <div class="nav-title">System</div>
+  <button class="nav-btn" data-page="settingsPage" onclick="showPage('settingsPage')">⚙️ School Settings</button>
 </aside>
-
-
-
-<!-- =======================================================
-     MAIN
-======================================================= -->
 
 <main class="main">
 
-
-<!-- =======================================================
-     DASHBOARD
-======================================================= -->
-
-<section
-    class="page active"
-    id="dashboardPage">
-
-
-    <div class="page-header">
-
-        <h1>
-
-            Dashboard
-
-        </h1>
-
-
-        <p>
-
-            Manage student results and generate professional
-            academic DMCs.
-
-        </p>
-
+<section class="page active" id="dashboardPage">
+  <div class="page-header"><h1>Dashboard</h1><p>Manage student results and generate professional academic DMCs.</p></div>
+  <div class="dashboard-grid">
+    <div class="stat-card"><div class="stat-label">Total Results</div><div class="stat-value" id="statStudents">0</div></div>
+    <div class="stat-card"><div class="stat-label">Classes</div><div class="stat-value" id="statClasses">0</div></div>
+    <div class="stat-card"><div class="stat-label">Sections</div><div class="stat-value" id="statSections">0</div></div>
+    <div class="stat-card"><div class="stat-label">Passed</div><div class="stat-value" id="statPassed">0</div></div>
+    <div class="stat-card"><div class="stat-label">Failed</div><div class="stat-value" id="statFailed">0</div></div>
+    <div class="stat-card"><div class="stat-label">Pass Rate</div><div class="stat-value" id="statRate">0%</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Quick Actions</div>
+    <div class="actions" style="margin-top:0">
+      <button class="btn btn-primary" onclick="showPage('adminPage')">➕ Create New Result</button>
+      <button class="btn btn-outline" onclick="showLatestResult()">📄 View Latest Result</button>
+      <button class="btn btn-light" onclick="loadDemoData()">🧪 Load Demo Data</button>
     </div>
-
-
-
-    <div class="dashboard-grid">
-
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-
-                Total Results
-
-            </div>
-
-
-            <div
-                class="stat-value"
-                id="statStudents">
-
-                0
-
-            </div>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-
-                Classes
-
-            </div>
-
-
-            <div
-                class="stat-value"
-                id="statClasses">
-
-                0
-
-            </div>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-
-                Sections
-
-            </div>
-
-
-            <div
-                class="stat-value"
-                id="statSections">
-
-                0
-
-            </div>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-
-                Passing Results
-
-            </div>
-
-
-            <div
-                class="stat-value"
-                id="statPassed">
-
-                0
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="card">
-
-
-        <div class="card-title">
-
-            Quick Actions
-
-        </div>
-
-
-        <div class="actions">
-
-
-            <button
-                class="btn btn-primary"
-                onclick="showPage('adminPage')">
-
-                ➕ Create New Result
-
-            </button>
-
-
-            <button
-                class="btn btn-outline"
-                onclick="showLatestResult()">
-
-                📄 View Latest Result
-
-            </button>
-
-
-            <button
-                class="btn btn-light"
-                onclick="loadDemoData()">
-
-                🧪 Load Demo Data
-
-            </button>
-
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="card">
-
-
-        <div class="card-title">
-
-            About This System
-
-        </div>
-
-
-        <p style="
-            color:#64748b;
-            line-height:1.7;
-            margin:0;
-        ">
-
-            This is a personal result management system for
-            Agahi Group of Schools. Student records are stored
-            locally in your browser. You can create results,
-            calculate grades automatically, generate professional
-            DMCs and print them as A4 PDF documents.
-
-        </p>
-
-
-    </div>
-
-
+  </div>
+  <div class="card">
+    <div class="card-title">Result Rule</div>
+    <div class="rule" id="ruleText"></div>
+    <p class="hint" style="margin:0">Student records are stored locally in this browser. Export a backup regularly.</p>
+  </div>
 </section>
 
+<section class="page" id="adminPage">
+  <div class="page-header"><h1>Result Management</h1><p>Create, save and manage student academic results.</p></div>
 
-
-<!-- =======================================================
-     ADMIN / RESULT MANAGEMENT
-======================================================= -->
-
-<section
-    class="page"
-    id="adminPage">
-
-
-    <div class="page-header">
-
-        <h1>
-
-            Result Management
-
-        </h1>
-
-
-        <p>
-
-            Create, save and manage student academic results.
-
-        </p>
-
-    </div>
-
-
-
-<!-- =======================================================
-     STUDENT INFORMATION
-======================================================= -->
-
-<div class="card">
-
-
-    <div class="card-title">
-
-        Student Information
-
-    </div>
-
-
+  <div class="card">
+    <div class="card-title">Student Information</div>
     <div class="form-grid-3">
-
-
-        <div class="form-group">
-
-            <label>
-
-                Student Name *
-
-            </label>
-
-
-            <input
-                id="studentName"
-                placeholder="Enter student name">
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>
-
-                Roll Number *
-
-            </label>
-
-
-            <input
-                id="rollNumber"
-                placeholder="e.g. 101">
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>
-
-                Father / Guardian Name
-
-            </label>
-
-
-            <input
-                id="fatherName"
-                placeholder="Enter father / guardian name">
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>
-
-                Class *
-
-            </label>
-
-
-            <input
-                id="className"
-                placeholder="e.g. 10">
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>
-
-                Section *
-
-            </label>
-
-
-            <input
-                id="sectionName"
-                placeholder="e.g. A">
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>
-
-                Academic Session
-
-            </label>
-
-
-            <input
-                id="session"
-                value="2026-27">
-
-        </div>
-
-
-
-        <div class="form-group">
-
-            <label>
-
-                Term / Examination
-
-            </label>
-
-
-            <select id="examType">
-
-                <option>
-
-                    Annual Examination
-
-                </option>
-
-
-                <option>
-
-                    Mid Term Examination
-
-                </option>
-
-
-                <option>
-
-                    First Term Examination
-
-                </option>
-
-
-                <option>
-
-                    Second Term Examination
-
-                </option>
-
-
-                <option>
-
-                    Monthly Test
-
-                </option>
-
-            </select>
-
-        </div>
-
-
+      <div class="form-group"><label>Student Name *</label><input id="studentName" placeholder="Enter student name"></div>
+      <div class="form-group"><label>Roll Number *</label><input id="rollNumber" placeholder="e.g. 101"></div>
+      <div class="form-group"><label>Father / Guardian Name</label><input id="fatherName" placeholder="Enter father / guardian name"></div>
+      <div class="form-group"><label>Class *</label><input id="className" placeholder="e.g. 10"></div>
+      <div class="form-group"><label>Section *</label><input id="sectionName" placeholder="e.g. A"></div>
+      <div class="form-group"><label>Academic Session</label><input id="session" value="2026-27"></div>
+      <div class="form-group"><label>Term / Examination</label>
+        <select id="examType"><option>Annual Examination</option><option>Mid Term Examination</option><option>First Term Examination</option><option>Second Term Examination</option><option>Monthly Test</option></select>
+      </div>
     </div>
+  </div>
 
-</div>
-
-
-
-<!-- =======================================================
-     SUBJECT MARKS
-======================================================= -->
-
-<div class="card">
-
-
-    <div class="card-title">
-
-        Subject Marks
-
-    </div>
-
-
-    <div class="subject-list-header">
-
-        <div>
-
-            Subject
-
-        </div>
-
-
-        <div>
-
-            Obtained
-
-        </div>
-
-
-        <div>
-
-            Maximum
-
-        </div>
-
-
-        <div></div>
-
-    </div>
-
-
+  <div class="card">
+    <div class="card-title">Subject Marks</div>
+    <div class="subject-list-header"><div>Subject</div><div>Obtained</div><div>Maximum</div><div></div></div>
     <div id="subjectRows"></div>
+    <div class="actions"><button class="btn btn-light" onclick="addSubjectRow()">➕ Add Subject</button></div>
+  </div>
 
-
-    <div class="actions">
-
-
-        <button
-            class="btn btn-light"
-            onclick="addSubjectRow()">
-
-            ➕ Add Subject
-
-        </button>
-
-
+  <div class="card">
+    <div class="card-title" id="saveTitle">Save Result</div>
+    <div class="actions" style="margin-top:0">
+      <button class="btn btn-primary" id="saveBtn" onclick="saveStudent()">💾 Save Result</button>
+      <button class="btn btn-light" onclick="clearStudentForm()">↺ Clear Form</button>
     </div>
+  </div>
 
-
-</div>
-
-
-
-<!-- =======================================================
-     SAVE
-======================================================= -->
-
-<div class="card">
-
-
-    <div class="card-title">
-
-        Save Result
-
+  <div class="card">
+    <div class="card-title">Saved Results</div>
+    <div class="filters">
+      <input id="fSearch" placeholder="Search name, roll or father" oninput="renderAdminTable()">
+      <select id="fClass" onchange="renderAdminTable()"></select>
+      <select id="fStatus" onchange="renderAdminTable()"><option value="">All results</option><option>PASS</option><option>FAIL</option></select>
     </div>
-
-
-    <div class="actions">
-
-
-        <button
-            class="btn btn-primary"
-            onclick="saveStudent()">
-
-            💾 Save Result
-
-        </button>
-
-
-        <button
-            class="btn btn-light"
-            onclick="clearStudentForm()">
-
-            ↺ Clear Form
-
-        </button>
-
-
-    </div>
-
-
-</div>
-
-
-
-<!-- =======================================================
-     SAVED RESULTS
-======================================================= -->
-
-<div class="card">
-
-
-    <div class="card-title">
-
-        Saved Results
-
-    </div>
-
-
     <div class="table-wrapper">
-
-
-        <table>
-
-
-            <thead>
-
-                <tr>
-
-                    <th>
-
-                        Roll
-
-                    </th>
-
-
-                    <th>
-
-                        Student Name
-
-                    </th>
-
-
-                    <th>
-
-                        Class
-
-                    </th>
-
-
-                    <th>
-
-                        Section
-
-                    </th>
-
-
-                    <th>
-
-                        Percentage
-
-                    </th>
-
-
-                    <th>
-
-                        Grade
-
-                    </th>
-
-
-                    <th>
-
-                        Status
-
-                    </th>
-
-
-                    <th>
-
-                        Actions
-
-                    </th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody
-                id="adminStudentTable">
-
-            </tbody>
-
-
-        </table>
-
-
+      <table>
+        <thead><tr><th>Rank</th><th>Roll</th><th>Student Name</th><th>Class</th><th>Section</th><th>Percentage</th><th>Grade</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="adminStudentTable"></tbody>
+      </table>
     </div>
+    <div class="actions"><button class="btn btn-outline" onclick="exportCSV()">📊 Export list (CSV)</button></div>
+  </div>
 
-
-</div>
-
-
-
-<!-- =======================================================
-     RESULT DMC
-======================================================= -->
-
-<div
-    class="result-wrapper"
-    id="resultWrapper">
-
-
+  <div class="result-wrapper" id="resultWrapper">
     <div class="result-actions">
-
-
-        <button
-            class="btn btn-primary"
-            onclick="printResult()">
-
-            🖨️ Print / Save PDF
-
-        </button>
-
-
-        <button
-            class="btn btn-success"
-            onclick="shareWhatsApp()">
-
-            💬 WhatsApp
-
-        </button>
-
-
-        <button
-            class="btn btn-light"
-            onclick="closeResult()">
-
-            ✕ Close
-
-        </button>
-
-
+      <button class="btn btn-primary" onclick="printResult()">🖨️ Print / Save PDF</button>
+      <button class="btn btn-success" onclick="shareWhatsApp()">💬 WhatsApp</button>
+      <button class="btn btn-light" onclick="closeResult()">✕ Close</button>
     </div>
-
-
-    <div
-        class="result-card"
-        id="resultCard">
-
-    </div>
-
-
-</div>
-
-
+    <div class="result-card" id="resultCard"></div>
+  </div>
 </section>
 
-
-
-<!-- =======================================================
-     SETTINGS
-======================================================= -->
-
-<section
-    class="page"
-    id="settingsPage">
-
-
-    <div class="page-header">
-
-        <h1>
-
-            School Settings
-
-        </h1>
-
-
-        <p>
-
-            Configure the information displayed on the DMC.
-
-        </p>
-
+<section class="page" id="settingsPage">
+  <div class="page-header"><h1>School Settings</h1><p>Configure the information displayed on the DMC.</p></div>
+  <div class="card">
+    <div class="settings-note">These details appear on every generated DMC.</div>
+    <div class="card-title">School Information</div>
+    <div class="form-grid">
+      <div class="form-group"><label>School Name</label><input id="schoolName" placeholder="Agahi Group of Schools"></div>
+      <div class="form-group"><label>Principal Name</label><input id="principalName" placeholder="Principal Name"></div>
+      <div class="form-group full"><label>School Address</label><input id="schoolAddress" placeholder="Sariab Road, Quetta"></div>
+      <div class="form-group"><label>School Logo URL</label><input id="schoolLogo" placeholder="https://example.com/logo.png"></div>
+      <div class="form-group"><label>Or upload a logo (works offline)</label><input type="file" id="logoFile" accept="image/*" onchange="handleLogo(event)"></div>
+      <div class="form-group"><label>Passing percentage per subject</label><input id="passPercent" type="number" min="1" max="100" value="40"></div>
     </div>
-
-
-
-    <div class="card">
-
-
-        <div class="settings-note">
-
-            These details will appear on every generated DMC.
-
-        </div>
-
-
-
-        <div class="card-title">
-
-            School Information
-
-        </div>
-
-
-
-        <div class="form-grid">
-
-
-            <div class="form-group">
-
-                <label>
-
-                    School Name
-
-                </label>
-
-
-                <input
-                    id="schoolName"
-                    placeholder="Agahi Group of Schools">
-
-            </div>
-
-
-
-            <div class="form-group">
-
-                <label>
-
-                    School Logo URL
-
-                </label>
-
-
-                <input
-                    id="schoolLogo"
-                    placeholder="https://example.com/logo.png">
-
-            </div>
-
-
-
-            <div class="form-group full">
-
-                <label>
-
-                    School Address
-
-                </label>
-
-
-                <input
-                    id="schoolAddress"
-                    placeholder="Sariab Road, Quetta">
-
-            </div>
-
-
-
-            <div class="form-group">
-
-                <label>
-
-                    Principal Name
-
-                </label>
-
-
-                <input
-                    id="principalName"
-                    placeholder="Principal Name">
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="actions">
-
-
-            <button
-                class="btn btn-primary"
-                onclick="saveSettings()">
-
-                💾 Save Settings
-
-            </button>
-
-
-        </div>
-
-
+    <div class="actions"><button class="btn btn-primary" onclick="saveSettings()">💾 Save Settings</button></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Data Management</div>
+    <p class="hint">Records are stored in this browser (localStorage). Clearing browser data erases them, so export a backup regularly.</p>
+    <div class="actions" style="margin-top:0">
+      <button class="btn btn-outline" onclick="exportData()">📥 Export Backup</button>
+      <button class="btn btn-light" onclick="document.getElementById('importFile').click()">📤 Import Backup</button>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+      <button class="btn btn-danger" onclick="deleteAllData()">🗑️ Delete All Data</button>
     </div>
-
-
-
-    <!-- DATA MANAGEMENT -->
-
-    <div class="card">
-
-
-        <div class="card-title">
-
-            Data Management
-
-        </div>
-
-
-        <p style="
-            color:#64748b;
-            line-height:1.7;
-        ">
-
-            Student records and school settings are stored
-            in your browser using localStorage. Use the backup
-            option regularly if the records are important.
-
-        </p>
-
-
-        <div class="actions">
-
-
-            <button
-                class="btn btn-outline"
-                onclick="exportData()">
-
-                📥 Export Backup
-
-            </button>
-
-
-            <button
-                class="btn btn-light"
-                onclick="
-                    document
-                    .getElementById('importFile')
-                    .click()
-                ">
-
-                📤 Import Backup
-
-            </button>
-
-
-            <input
-                type="file"
-                id="importFile"
-                accept=".json"
-                style="display:none"
-                onchange="importData(event)">
-
-
-            <button
-                class="btn btn-danger"
-                onclick="deleteAllData()">
-
-                🗑️ Delete All Data
-
-            </button>
-
-
-        </div>
-
-
-    </div>
-
-
+  </div>
 </section>
-
 
 </main>
-
 </div>
-
-</div>
-
+<div class="toast" id="toast"></div>
 
 <script>
+const STORAGE_KEY="agahi_school_students_v2", SETTINGS_KEY="agahi_school_settings_v2";
+const DEFAULT_SETTINGS={schoolName:"Agahi Group of Schools",schoolLogo:"",schoolAddress:"Sariab Road, Quetta",principalName:"Principal",passPercent:40};
+const $=id=>document.getElementById(id);
 
-/* =========================================================
-   STORAGE
-========================================================= */
+function safeParse(key,fallback){try{const v=JSON.parse(localStorage.getItem(key));return v??fallback}catch(e){return fallback}}
+function persist(key,val){try{localStorage.setItem(key,JSON.stringify(val));return true}catch(e){alert("Could not save data (storage full or blocked). Please export a backup.");return false}}
+function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
+const escapeAttr=escapeHtml;
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),2400)}
 
-const STORAGE_KEY =
-    "agahi_school_students_v2";
+let settings={...DEFAULT_SETTINGS,...safeParse(SETTINGS_KEY,{})};
+let students=safeParse(STORAGE_KEY,[]);
+if(!Array.isArray(students))students=[];
+let selectedStudent=null, editingId=null;
 
-const SETTINGS_KEY =
-    "agahi_school_settings_v2";
+/* ================= RESULT RULES =================
+   Subject fails when obtained < minimum (pass % of its maximum).
+   0 or 1 failed subject  -> PASS
+   2 or more failed       -> FAIL                                  */
+const minMarks=max=>Math.ceil(Number(max)*settings.passPercent/100);
+const gradeOf=p=>p>=90?"A+":p>=80?"A":p>=70?"B+":p>=60?"B":p>=50?"C":p>=40?"D":"E";
 
+function calculateResult(subjects){
+  let total=0,maximum=0;const failed=[];
+  subjects.forEach(s=>{
+    total+=Number(s.obtained);maximum+=Number(s.maximum);
+    if(Number(s.obtained)<minMarks(s.maximum))failed.push(s.subject);
+  });
+  const percentage=maximum>0?Number((total/maximum*100).toFixed(2)):0;
+  const status=failed.length<=1?"PASS":"FAIL";
+  return {total,maximum,percentage,failed,status,grade:status==="FAIL"?"E":gradeOf(percentage)};
+}
+function applyResult(st){const r=calculateResult(st.subjects||[]);Object.assign(st,{total:r.total,maximum:r.maximum,percentage:r.percentage,grade:r.grade,status:r.status,failed:r.failed});return st}
+function recalcAll(){students=students.filter(s=>s&&Array.isArray(s.subjects)).map(applyResult)}
+const statusBadge=s=>s.status==="FAIL"?'<span class="badge badge-danger">FAIL</span>':s.failed&&s.failed.length?`<span class="badge badge-warn" title="Failed in ${escapeAttr(s.failed[0])}">PASS (1 failed)</span>`:'<span class="badge badge-success">PASS</span>';
+function ruleSentence(){return `A subject is failed when marks are below ${settings.passPercent}% of its maximum. A student who fails <b>one subject only</b> is still <b>PASS</b>. A student who fails <b>two or more subjects</b> is <b>FAIL</b>.`}
 
-let students =
-    JSON.parse(
-        localStorage.getItem(STORAGE_KEY)
-        || "[]"
-    );
-
-
-let settings =
-    JSON.parse(
-        localStorage.getItem(SETTINGS_KEY)
-        ||
-        JSON.stringify({
-
-            schoolName:
-                "Agahi Group of Schools",
-
-            schoolLogo:
-                "",
-
-            schoolAddress:
-                "Sariab Road, Quetta",
-
-            principalName:
-                "Principal"
-
-        })
-    );
-
-
-let selectedStudent = null;
-
-
-/* =========================================================
-   INITIALIZATION
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        loadSettings();
-
-        createDefaultSubjects();
-
-        refreshAll();
-
-    }
-);
-
-
-/* =========================================================
-   DEFAULT SUBJECTS
-========================================================= */
+/* ================= INIT ================= */
+document.addEventListener("DOMContentLoaded",()=>{recalcAll();persist(STORAGE_KEY,students);loadSettings();createDefaultSubjects();refreshAll()});
 
 function createDefaultSubjects(){
-
-    const container =
-        document.getElementById(
-            "subjectRows"
-        );
-
-
-    if(
-        container.children.length > 0
-    ){
-
-        return;
-
-    }
-
-
-    addSubjectRow(
-        "English",
-        "",
-        "100"
-    );
-
-
-    addSubjectRow(
-        "Mathematics",
-        "",
-        "100"
-    );
-
-
-    addSubjectRow(
-        "Science",
-        "",
-        "100"
-    );
-
-
-    addSubjectRow(
-        "Computer",
-        "",
-        "100"
-    );
-
-
-    addSubjectRow(
-        "Social Studies",
-        "",
-        "100"
-    );
-
+  if($("subjectRows").children.length)return;
+  ["English","Mathematics","Science","Computer","Social Studies"].forEach(n=>addSubjectRow(n,"","100"));
 }
 
+/* ================= NAVIGATION ================= */
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  const p=$(id);if(p)p.classList.add("active");
+  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+  $("sidebar").classList.remove("open");window.scrollTo(0,0);
+}
+function toggleSidebar(){$("sidebar").classList.toggle("open")}
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function showPage(pageId){
-
-    document
-        .querySelectorAll(".page")
-        .forEach(
-            page =>
-                page.classList.remove(
-                    "active"
-                )
-        );
-
-
-    const page =
-        document.getElementById(
-            pageId
-        );
-
-
-    if(page){
-
-        page.classList.add(
-            "active"
-        );
-
-    }
-
-
-    document
-        .querySelectorAll(".nav-btn")
-        .forEach(
-            button =>
-                button.classList.remove(
-                    "active"
-                )
-        );
-
-
-    const activeButton =
-        document.querySelector(
-            `.nav-btn[data-page="${pageId}"]`
-        );
-
-
-    if(activeButton){
-
-        activeButton.classList.add(
-            "active"
-        );
-
-    }
-
-
-    document
-        .getElementById("sidebar")
-        .classList.remove(
-            "open"
-        );
-
+/* ================= SUBJECT ROWS ================= */
+function addSubjectRow(name="",obtained="",maximum="100"){
+  const row=document.createElement("div");row.className="subject-row";
+  row.innerHTML=`<input class="subject-name" placeholder="Subject" value="${escapeAttr(name)}">
+    <input class="subject-obtained" type="number" min="0" placeholder="0" value="${escapeAttr(obtained)}">
+    <input class="subject-max" type="number" min="1" placeholder="100" value="${escapeAttr(maximum)}">
+    <button class="btn btn-danger" type="button" onclick="this.parentElement.remove()" aria-label="Remove subject">✕</button>`;
+  $("subjectRows").appendChild(row);
 }
 
-
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
-
-function toggleSidebar(){
-
-    document
-        .getElementById("sidebar")
-        .classList.toggle(
-            "open"
-        );
-
-}
-
-
-/* =========================================================
-   SUBJECT ROW
-========================================================= */
-
-function addSubjectRow(
-    name="",
-    obtained="",
-    maximum="100"
-){
-
-    const container =
-        document.getElementById(
-            "subjectRows"
-        );
-
-
-    const row =
-        document.createElement(
-            "div"
-        );
-
-
-    row.className =
-        "subject-row";
-
-
-    row.innerHTML = `
-
-        <input
-            class="subject-name"
-            placeholder="Subject"
-            value="${escapeAttr(name)}">
-
-
-        <input
-            class="subject-obtained"
-            type="number"
-            min="0"
-            placeholder="0"
-            value="${escapeAttr(obtained)}">
-
-
-        <input
-            class="subject-max"
-            type="number"
-            min="1"
-            placeholder="100"
-            value="${escapeAttr(maximum)}">
-
-
-        <button
-            class="btn btn-danger"
-            type="button"
-            onclick="
-                this.parentElement.remove()
-            ">
-
-            ✕
-
-        </button>
-
-    `;
-
-
-    container.appendChild(
-        row
-    );
-
-}
-
-
-/* =========================================================
-   SAVE STUDENT
-========================================================= */
-
+/* ================= SAVE STUDENT ================= */
 function saveStudent(){
-
-    const name =
-        document
-        .getElementById(
-            "studentName"
-        )
-        .value
-        .trim();
-
-
-    const roll =
-        document
-        .getElementById(
-            "rollNumber"
-        )
-        .value
-        .trim();
-
-
-    const className =
-        document
-        .getElementById(
-            "className"
-        )
-        .value
-        .trim();
-
-
-    const section =
-        document
-        .getElementById(
-            "sectionName"
-        )
-        .value
-        .trim();
-
-
-    if(
-        !name ||
-        !roll ||
-        !className ||
-        !section
-    ){
-
-        alert(
-            "Please enter Student Name, Roll Number, Class and Section."
-        );
-
-        return;
-
-    }
-
-
-    const subjects = [];
-
-
-    document
-        .querySelectorAll(
-            "#subjectRows .subject-row"
-        )
-        .forEach(
-            row => {
-
-                const subject =
-                    row
-                    .querySelector(
-                        ".subject-name"
-                    )
-                    .value
-                    .trim();
-
-
-                const obtained =
-                    Number(
-                        row
-                        .querySelector(
-                            ".subject-obtained"
-                        )
-                        .value
-                        || 0
-                    );
-
-
-                const maximum =
-                    Number(
-                        row
-                        .querySelector(
-                            ".subject-max"
-                        )
-                        .value
-                        || 100
-                    );
-
-
-                if(subject){
-
-                    subjects.push({
-
-                        subject,
-
-                        obtained,
-
-                        maximum
-
-                    });
-
-                }
-
-            }
-        );
-
-
-    if(
-        subjects.length === 0
-    ){
-
-        alert(
-            "Please add at least one subject."
-        );
-
-        return;
-
-    }
-
-
-    for(
-        const subject
-        of subjects
-    ){
-
-        if(
-            subject.maximum <= 0
-        ){
-
-            alert(
-                "Maximum marks must be greater than zero."
-            );
-
-            return;
-
-        }
-
-
-        if(
-            subject.obtained < 0
-            ||
-            subject.obtained >
-            subject.maximum
-        ){
-
-            alert(
-                `Obtained marks for ${subject.subject} must be between 0 and ${subject.maximum}.`
-            );
-
-            return;
-
-        }
-
-    }
-
-
-    const result =
-        calculateResult(
-            subjects
-        );
-
-
-    const student = {
-
-        id:
-            Date.now()
-            .toString(),
-
-        name,
-
-        roll,
-
-        father:
-            document
-            .getElementById(
-                "fatherName"
-            )
-            .value
-            .trim(),
-
-        className,
-
-        section,
-
-        session:
-            document
-            .getElementById(
-                "session"
-            )
-            .value
-            .trim(),
-
-        examType:
-            document
-            .getElementById(
-                "examType"
-            )
-            .value,
-
-        subjects,
-
-        total:
-            result.total,
-
-        maximum:
-            result.maximum,
-
-        percentage:
-            result.percentage,
-
-        grade:
-            result.grade,
-
-        status:
-            result.status,
-
-        createdAt:
-            new Date()
-            .toISOString()
-
-    };
-
-
-    const existingIndex =
-        students.findIndex(
-            s =>
-
-                s.roll
-                    .toLowerCase()
-                    ===
-                    roll.toLowerCase()
-
-                &&
-
-                s.className
-                    .toLowerCase()
-                    ===
-                    className.toLowerCase()
-
-                &&
-
-                s.section
-                    .toLowerCase()
-                    ===
-                    section.toLowerCase()
-        );
-
-
-    if(
-        existingIndex >= 0
-    ){
-
-        if(
-            !confirm(
-                "A result with this roll number already exists in this class and section. Update it?"
-            )
-        ){
-
-            return;
-
-        }
-
-
-        student.id =
-            students[
-                existingIndex
-            ].id;
-
-
-        students[
-            existingIndex
-        ] =
-            student;
-
-    }
-    else{
-
-        students.push(
-            student
-        );
-
-    }
-
-
-    saveStudents();
-
-    refreshAll();
-
-    alert(
-        "Student result saved successfully."
-    );
-
-
-    showResult(
-        student
-    );
-
+  document.querySelectorAll(".invalid").forEach(e=>e.classList.remove("invalid"));
+  const v=id=>$(id).value.trim();
+  const name=v("studentName"),roll=v("rollNumber"),className=v("className"),section=v("sectionName");
+  if(!name||!roll||!className||!section){alert("Please enter Student Name, Roll Number, Class and Section.");return}
+
+  const subjects=[],seen=new Set();
+  for(const row of document.querySelectorAll("#subjectRows .subject-row")){
+    const nameEl=row.querySelector(".subject-name"),obEl=row.querySelector(".subject-obtained"),mxEl=row.querySelector(".subject-max");
+    const subject=nameEl.value.trim();
+    if(!subject&&obEl.value==="")continue;           // ignore fully empty rows
+    if(!subject){nameEl.classList.add("invalid");alert("Please enter a subject name for every row that has marks.");return}
+    if(seen.has(subject.toLowerCase())){nameEl.classList.add("invalid");alert(`Subject "${subject}" is entered twice.`);return}
+    seen.add(subject.toLowerCase());
+    const maximum=Number(mxEl.value||100);
+    if(!(maximum>0)){mxEl.classList.add("invalid");alert("Maximum marks must be greater than zero.");return}
+    if(obEl.value===""){obEl.classList.add("invalid");alert(`Enter marks for ${subject} (use 0 if the student was absent).`);return}
+    const obtained=Number(obEl.value);
+    if(obtained<0||obtained>maximum){obEl.classList.add("invalid");alert(`Obtained marks for ${subject} must be between 0 and ${maximum}.`);return}
+    subjects.push({subject,obtained,maximum});
+  }
+  if(!subjects.length){alert("Please add at least one subject.");return}
+
+  const student=applyResult({id:Date.now().toString(),name,roll,father:v("fatherName"),className,section,session:v("session"),examType:$("examType").value,subjects,createdAt:new Date().toISOString()});
+  const same=s=>s.roll.toLowerCase()===roll.toLowerCase()&&s.className.toLowerCase()===className.toLowerCase()&&s.section.toLowerCase()===section.toLowerCase();
+  const dupIndex=students.findIndex(s=>same(s)&&s.id!==editingId);
+
+  if(editingId){
+    if(dupIndex>=0){alert("Another result already uses this roll number in this class and section.");return}
+    const i=students.findIndex(s=>s.id===editingId);
+    if(i>=0){student.id=editingId;student.createdAt=students[i].createdAt;students[i]=student}else students.push(student);
+  }else if(dupIndex>=0){
+    if(!confirm("A result with this roll number already exists in this class and section. Update it?"))return;
+    student.id=students[dupIndex].id;students[dupIndex]=student;
+  }else students.push(student);
+
+  if(!persist(STORAGE_KEY,students))return;
+  editingId=null;setEditMode(false);refreshAll();toast("Result saved.");showResult(student);
 }
 
-
-/* =========================================================
-   CALCULATE RESULT
-========================================================= */
-
-function calculateResult(
-    subjects
-){
-
-    let total = 0;
-
-    let maximum = 0;
-
-    let passed = true;
-
-
-    subjects.forEach(
-        subject => {
-
-            total +=
-                Number(
-                    subject.obtained
-                );
-
-
-            maximum +=
-                Number(
-                    subject.maximum
-                );
-
-
-            const percentage =
-                (
-                    Number(
-                        subject.obtained
-                    )
-                    /
-                    Number(
-                        subject.maximum
-                    )
-                )
-                * 100;
-
-
-            if(
-                percentage < 40
-            ){
-
-                passed = false;
-
-            }
-
-        }
-    );
-
-
-    const percentage =
-        maximum > 0
-
-        ?
-
-        (
-            total
-            /
-            maximum
-        )
-        * 100
-
-        :
-
-        0;
-
-
-    let grade = "E";
-
-    if(percentage >= 90) grade = "A+";
-    else if(percentage >= 80) grade = "A";
-    else if(percentage >= 70) grade = "B+";
-    else if(percentage >= 60) grade = "B";
-    else if(percentage >= 50) grade = "C";
-    else if(percentage >= 40) grade = "D";
-
-
-    if(
-        percentage < 40
-    ){
-
-        passed = false;
-
-    }
-
-
-    return {
-
-        total,
-
-        maximum,
-
-        percentage:
-            Number(
-                percentage.toFixed(2)
-            ),
-
-        grade,
-
-        status:
-            passed
-            ? "PASS"
-            : "FAIL"
-
-    };
-
+function setEditMode(on){$("saveBtn").textContent=on?"💾 Update Result":"💾 Save Result";$("saveTitle").textContent=on?"Editing result — update to save changes":"Save Result"}
+function editStudent(id){
+  const s=students.find(x=>x.id===id);if(!s)return;
+  editingId=id;
+  $("studentName").value=s.name;$("rollNumber").value=s.roll;$("fatherName").value=s.father||"";$("className").value=s.className;$("sectionName").value=s.section;$("session").value=s.session||"";$("examType").value=s.examType;
+  $("subjectRows").innerHTML="";s.subjects.forEach(x=>addSubjectRow(x.subject,x.obtained,x.maximum));
+  setEditMode(true);closeResult();$("studentName").scrollIntoView({behavior:"smooth",block:"center"});toast("Editing "+s.name);
 }
 
-
-/* =========================================================
-   STORAGE
-========================================================= */
-
-function saveStudents(){
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(
-            students
-        )
-    );
-
-}
-
-
+/* ================= SETTINGS ================= */
 function saveSettings(){
-
-    settings = {
-
-        schoolName:
-            document
-            .getElementById(
-                "schoolName"
-            )
-            .value
-            .trim()
-            ||
-            "Agahi Group of Schools",
-
-        schoolLogo:
-            document
-            .getElementById(
-                "schoolLogo"
-            )
-            .value
-            .trim(),
-
-        schoolAddress:
-            document
-            .getElementById(
-                "schoolAddress"
-            )
-            .value
-            .trim()
-            ||
-            "Sariab Road, Quetta",
-
-        principalName:
-            document
-            .getElementById(
-                "principalName"
-            )
-            .value
-            .trim()
-            ||
-            "Principal"
-
-    };
-
-
-    localStorage.setItem(
-        SETTINGS_KEY,
-        JSON.stringify(
-            settings
-        )
-    );
-
-
-    alert(
-        "School settings saved successfully."
-    );
-
-
-    refreshAll();
-
+  let pp=Number($("passPercent").value);if(!(pp>=1&&pp<=100))pp=40;
+  settings={schoolName:$("schoolName").value.trim()||DEFAULT_SETTINGS.schoolName,schoolLogo:$("schoolLogo").value.trim(),schoolAddress:$("schoolAddress").value.trim()||DEFAULT_SETTINGS.schoolAddress,principalName:$("principalName").value.trim()||DEFAULT_SETTINGS.principalName,passPercent:pp};
+  if(!persist(SETTINGS_KEY,settings))return;
+  recalcAll();persist(STORAGE_KEY,students);refreshAll();toast("Settings saved. All results recalculated.");
 }
-
-
-/* =========================================================
-   LOAD SETTINGS
-========================================================= */
-
 function loadSettings(){
-
-    document
-        .getElementById(
-            "schoolName"
-        )
-        .value =
-        settings.schoolName;
-
-
-    document
-        .getElementById(
-            "schoolLogo"
-        )
-        .value =
-        settings.schoolLogo;
-
-
-    document
-        .getElementById(
-            "schoolAddress"
-        )
-        .value =
-        settings.schoolAddress;
-
-
-    document
-        .getElementById(
-            "principalName"
-        )
-        .value =
-        settings.principalName;
-
+  $("schoolName").value=settings.schoolName;$("schoolLogo").value=settings.schoolLogo;$("schoolAddress").value=settings.schoolAddress;$("principalName").value=settings.principalName;$("passPercent").value=settings.passPercent;
+}
+function handleLogo(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{const img=new Image();img.onload=()=>{
+    const k=Math.min(1,300/Math.max(img.width,img.height)),c=document.createElement("canvas");
+    c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+    $("schoolLogo").value=c.toDataURL("image/png");toast("Logo loaded. Click Save Settings.");
+  };img.onerror=()=>alert("That file is not a valid image.");img.src=r.result};
+  r.readAsDataURL(f);e.target.value="";
 }
 
-
-/* =========================================================
-   REFRESH ALL
-========================================================= */
-
+/* ================= REFRESH / DASHBOARD ================= */
 function refreshAll(){
-
-    students =
-        JSON.parse(
-            localStorage.getItem(
-                STORAGE_KEY
-            )
-            || "[]"
-        );
-
-
-    updateDashboard();
-
-    renderAdminTable();
-
+  students=safeParse(STORAGE_KEY,students);if(!Array.isArray(students))students=[];
+  $("ruleText").innerHTML=ruleSentence();
+  fillClassFilter();updateDashboard();renderAdminTable();
 }
-
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
-
 function updateDashboard(){
-
-    const classes =
-        new Set(
-            students.map(
-                student =>
-                    student.className
-            )
-        );
-
-
-    const sections =
-        new Set(
-            students.map(
-                student =>
-                    `${student.className}-${student.section}`
-            )
-        );
-
-
-    const passed =
-        students.filter(
-            student =>
-                student.status
-                ===
-                "PASS"
-        ).length;
-
-
-    document
-        .getElementById(
-            "statStudents"
-        )
-        .textContent =
-        students.length;
-
-
-    document
-        .getElementById(
-            "statClasses"
-        )
-        .textContent =
-        classes.size;
-
-
-    document
-        .getElementById(
-            "statSections"
-        )
-        .textContent =
-        sections.size;
-
-
-    document
-        .getElementById(
-            "statPassed"
-        )
-        .textContent =
-        passed;
-
+  const passed=students.filter(s=>s.status==="PASS").length,n=students.length;
+  $("statStudents").textContent=n;
+  $("statClasses").textContent=new Set(students.map(s=>s.className)).size;
+  $("statSections").textContent=new Set(students.map(s=>s.className+"-"+s.section)).size;
+  $("statPassed").textContent=passed;$("statFailed").textContent=n-passed;
+  $("statRate").textContent=n?Math.round(passed/n*100)+"%":"0%";
+}
+function fillClassFilter(){
+  const el=$("fClass"),cur=el.value;
+  const groups=[...new Set(students.map(s=>s.className+"|"+s.section))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+  el.innerHTML='<option value="">All classes</option>'+groups.map(g=>{const [c,s]=g.split("|");return `<option value="${escapeAttr(g)}">Class ${escapeHtml(c)} - ${escapeHtml(s)}</option>`}).join("");
+  if(groups.includes(cur))el.value=cur;
 }
 
-
-/* =========================================================
-   ADMIN TABLE
-========================================================= */
-
+/* Rank within class+section, among PASS students, by total marks (ties share a rank) */
+function rankMap(){
+  const map={},groups={};
+  students.filter(s=>s.status==="PASS").forEach(s=>{(groups[s.className+"|"+s.section]??=[]).push(s)});
+  Object.values(groups).forEach(g=>{
+    g.sort((a,b)=>b.percentage-a.percentage);
+    let last=null,rank=0;g.forEach((s,i)=>{if(s.percentage!==last){rank=i+1;last=s.percentage}map[s.id]=rank});
+  });
+  return map;
+}
+function filteredStudents(){
+  const q=$("fSearch").value.trim().toLowerCase(),g=$("fClass").value,st=$("fStatus").value;
+  return students.filter(s=>(!q||(s.name+" "+s.roll+" "+(s.father||"")).toLowerCase().includes(q))&&(!g||s.className+"|"+s.section===g)&&(!st||s.status===st))
+    .sort((a,b)=>(a.className+a.section).localeCompare(b.className+b.section,undefined,{numeric:true})||String(a.roll).localeCompare(String(b.roll),undefined,{numeric:true}));
+}
 function renderAdminTable(){
-
-    const tbody =
-        document
-        .getElementById(
-            "adminStudentTable"
-        );
-
-
-    tbody.innerHTML = "";
-
-
-    if(
-        students.length === 0
-    ){
-
-        tbody.innerHTML = `
-
-            <tr>
-
-                <td
-                    colspan="8"
-                    style="
-                        text-align:center;
-                        color:#64748b;
-                        padding:30px;
-                    ">
-
-                    No results saved yet.
-
-                </td>
-
-            </tr>
-
-        `;
-
-        return;
-
-    }
-
-
-    students
-        .slice()
-        .reverse()
-        .forEach(
-            student => {
-
-                const tr =
-                    document
-                    .createElement(
-                        "tr"
-                    );
-
-
-                tr.innerHTML = `
-
-                    <td>
-                        ${escapeHtml(
-                            student.roll
-                        )}
-                    </td>
-
-
-                    <td>
-                        <strong>
-                            ${escapeHtml(
-                                student.name
-                            )}
-                        </strong>
-                    </td>
-
-
-                    <td>
-                        ${escapeHtml(
-                            student.className
-                        )}
-                    </td>
-
-
-                    <td>
-                        ${escapeHtml(
-                            student.section
-                        )}
-                    </td>
-
-
-                    <td>
-                        ${student.percentage}%
-                    </td>
-
-
-                    <td>
-
-                        <span
-                            class="badge badge-blue">
-
-                            ${escapeHtml(
-                                student.grade
-                            )}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <span
-                            class="badge ${
-                                student.status === "PASS"
-                                ? "badge-success"
-                                : "badge-danger"
-                            }">
-
-                            ${student.status}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <button
-                            class="btn btn-outline"
-                            onclick="
-                                showResultById(
-                                    '${escapeAttr(
-                                        student.id
-                                    )}'
-                                )
-                            ">
-
-                            View DMC
-
-                        </button>
-
-
-                        <button
-                            class="btn btn-danger"
-                            onclick="
-                                deleteStudent(
-                                    '${escapeAttr(
-                                        student.id
-                                    )}'
-                                )
-                            ">
-
-                            Delete
-
-                        </button>
-
-                    </td>
-
-                `;
-
-
-                tbody.appendChild(
-                    tr
-                );
-
-            }
-        );
-
+  const tb=$("adminStudentTable"),list=filteredStudents(),ranks=rankMap();
+  if(!list.length){tb.innerHTML=`<tr><td colspan="9" style="text-align:center;color:#64748b;padding:30px">${students.length?"No results match your filters.":"No results saved yet."}</td></tr>`;return}
+  tb.innerHTML=list.map(s=>`<tr>
+    <td>${ranks[s.id]??"-"}</td><td>${escapeHtml(s.roll)}</td><td><strong>${escapeHtml(s.name)}</strong></td>
+    <td>${escapeHtml(s.className)}</td><td>${escapeHtml(s.section)}</td><td>${s.percentage}%</td>
+    <td><span class="badge badge-blue">${escapeHtml(s.grade)}</span></td><td>${statusBadge(s)}</td>
+    <td class="act"><button class="btn btn-outline btn-sm" onclick="showResultById('${escapeAttr(s.id)}')">DMC</button>
+    <button class="btn btn-light btn-sm" onclick="editStudent('${escapeAttr(s.id)}')">Edit</button>
+    <button class="btn btn-danger btn-sm" onclick="deleteStudent('${escapeAttr(s.id)}')">Delete</button></td></tr>`).join("");
 }
 
-
-/* =========================================================
-   SHOW RESULT
-========================================================= */
-
-function showResultById(
-    id
-){
-
-    const student =
-        students.find(
-            student =>
-                student.id === id
-        );
-
-
-    if(student){
-
-        showResult(
-            student
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   SHOW LATEST
-========================================================= */
-
+/* ================= DMC ================= */
+function showResultById(id){const s=students.find(x=>x.id===id);if(s)showResult(s)}
 function showLatestResult(){
-
-    if(
-        students.length === 0
-    ){
-
-        alert(
-            "No results are available yet."
-        );
-
-        return;
-
-    }
-
-
-    const latest =
-        students[
-            students.length - 1
-        ];
-
-
-    showPage(
-        "adminPage"
-    );
-
-
-    showResult(
-        latest
-    );
-
+  if(!students.length){alert("No results are available yet.");return}
+  showPage("adminPage");showResult(students[students.length-1]);
 }
-
-
-/* =========================================================
-   GENERATE DMC
-========================================================= */
-
 function showResult(student){
-    selectedStudent = student;
-    const wrapper = document.getElementById("resultWrapper");
-    const card = document.getElementById("resultCard");
-
-    const logo = settings.schoolLogo
-        ? `<div class="dmc-logo"><img src="${escapeAttr(settings.schoolLogo)}" alt="School Logo" onerror="this.style.display='none'"></div>`
-        : `<div class="dmc-logo"></div>`;
-
-    const issueDate = student.createdAt
-        ? new Date(student.createdAt).toLocaleDateString("en-GB")
-        : new Date().toLocaleDateString("en-GB");
-
-    const subjectRows = (student.subjects || []).map(subject => {
-        const maximum = Number(subject.maximum) || 0;
-        const obtained = Number(subject.obtained) || 0;
-        const percentage = maximum > 0 ? (obtained / maximum) * 100 : 0;
-        const minimum = Math.ceil(maximum * 0.33);
-        const status = percentage >= 40 ? "PASS" : "FAIL";
-        return `<tr>
-            <td>${escapeHtml(subject.subject || "-")}</td>
-            <td>${maximum}</td>
-            <td>${minimum}</td>
-            <td>${obtained}</td>
-            <td>${status}</td>
-        </tr>`;
-    }).join("");
-
-    const passMarks = Math.ceil((Number(student.maximum) || 0) * 0.40);
-    const resultStatus = student.status === "PASS" ? "PASS" : "FAIL";
-    const resultColor = resultStatus === "PASS" ? "#176b35" : "#b42318";
-
-    card.innerHTML = `
-      <div class="dmc-content">
-        <div class="dmc-title">${escapeHtml(settings.schoolName || "Agahi Group of Schools")}</div>
-        <div class="dmc-location">${escapeHtml(settings.schoolAddress || "SARIAB ROAD QUETTA")}</div>
-
-        <div class="dmc-top">
-          <table class="dmc-info-table">
-            <tr><td>Session</td><td>${escapeHtml(student.session || "-")}</td></tr>
-            <tr><td>Roll Number</td><td>${escapeHtml(student.roll || "-")}</td></tr>
-            <tr><td>Class</td><td>${escapeHtml(student.className || "-")}</td></tr>
-          </table>
-          <div class="dmc-term">
-            <div>TERM</div><div>${escapeHtml(student.examType || "Mid Term")}</div>
-          </div>
-          ${logo}
-        </div>
-
-        <div class="dmc-profile">
-          <div class="dmc-section-title">Student Profile</div>
-          <table class="dmc-profile-table">
-            <tr><td>Name of Student</td><td>${escapeHtml(student.name || "-")}</td></tr>
-            <tr><td>Father Name</td><td>${escapeHtml(student.father || "-")}</td></tr>
-            <tr><td>Date of Issue</td><td>${issueDate}</td></tr>
-          </table>
-        </div>
-
-        <div class="dmc-performance">Performance in Subjects</div>
-        <table class="dmc-marks">
-          <thead><tr><th>Subjects</th><th>Maximum</th><th>Minimum</th><th>Obtained Marks</th><th>Status</th></tr></thead>
-          <tbody>${subjectRows}</tbody>
-        </table>
-
-        <div class="dmc-summary-row">
-          <div class="dmc-summary">
-            <div class="label">Total. Marks</div><div class="value">${student.maximum}</div>
-            <div class="label">Pass. Marks</div><div class="value">${passMarks}</div>
-          </div>
-          <div class="dmc-obtained"><div>Marks Obtained</div><div>${student.total}</div></div>
-        </div>
-
-        <div class="dmc-lower">
-          <div class="dmc-grading">
-            <div class="dmc-grading-title">Grading Chart</div>
-            <table>
-              <tr><td>90% and above</td><td>A+</td><td>Outstanding</td></tr>
-              <tr><td>80% to 89%</td><td>A</td><td>Excellent</td></tr>
-              <tr><td>70% to 79%</td><td>B+</td><td>Very Good</td></tr>
-              <tr><td>60% to 69%</td><td>B</td><td>Good</td></tr>
-              <tr><td>50% to 59%</td><td>C</td><td>Fair</td></tr>
-              <tr><td>40% to 49%</td><td>D</td><td>Average</td></tr>
-              <tr><td>below 40%</td><td>E</td><td>Fail</td></tr>
-            </table>
-          </div>
-          <div class="dmc-percent">
-            <div class="dmc-percent-title">Percentage%</div>
-            <div class="dmc-percent-value">${Number(student.percentage || 0).toFixed(2)}%</div>
-          </div>
-        </div>
-
-        <div class="dmc-status" style="color:${resultColor}">Final Result: ${resultStatus}</div>
-        <div class="dmc-controller">Controller Examination<div class="dmc-controller-line"></div></div>
-        <div class="dmc-footer">This is a computer-generated academic result.</div>
-      </div>`;
-
-    wrapper.classList.add("show");
-    wrapper.scrollIntoView({behavior:"smooth",block:"start"});
+  selectedStudent=student;
+  const logo=settings.schoolLogo?`<div class="dmc-logo"><img src="${escapeAttr(settings.schoolLogo)}" alt="School Logo" onerror="this.style.display='none'"></div>`:`<div class="dmc-logo"></div>`;
+  const issueDate=new Date(student.createdAt||Date.now()).toLocaleDateString("en-GB");
+  const rows=student.subjects.map(s=>{
+    const max=Number(s.maximum)||0,ob=Number(s.obtained)||0,min=minMarks(max),fail=ob<min;
+    return `<tr><td>${escapeHtml(s.subject)}</td><td>${max}</td><td>${min}</td><td>${ob}</td><td class="${fail?"failcell":""}">${fail?"FAIL":"PASS"}</td></tr>`}).join("");
+  const passMarks=Math.ceil(student.maximum*settings.passPercent/100);
+  const pass=student.status==="PASS";
+  const note=student.failed.length?`<small>${pass?"Promoted — failed in ":"Failed in "}${escapeHtml(student.failed.join(", "))}</small>`:"";
+  $("resultCard").innerHTML=`<div class="dmc-content">
+    <div class="dmc-title">${escapeHtml(settings.schoolName)}</div>
+    <div class="dmc-location">${escapeHtml(settings.schoolAddress)}</div>
+    <div class="dmc-top">
+      <table class="dmc-info-table"><tr><td>Session</td><td>${escapeHtml(student.session||"-")}</td></tr><tr><td>Roll Number</td><td>${escapeHtml(student.roll)}</td></tr><tr><td>Class</td><td>${escapeHtml(student.className)} - ${escapeHtml(student.section)}</td></tr></table>
+      <div class="dmc-term"><div>TERM</div><div>${escapeHtml(student.examType||"-")}</div></div>${logo}
+    </div>
+    <div class="dmc-profile"><div class="dmc-section-title">Student Profile</div>
+      <table class="dmc-profile-table"><tr><td>Name of Student</td><td>${escapeHtml(student.name)}</td></tr><tr><td>Father Name</td><td>${escapeHtml(student.father||"-")}</td></tr><tr><td>Date of Issue</td><td>${issueDate}</td></tr></table></div>
+    <div class="dmc-performance">Performance in Subjects</div>
+    <table class="dmc-marks"><thead><tr><th>Subjects</th><th>Maximum</th><th>Minimum</th><th>Obtained Marks</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="dmc-summary-row">
+      <div class="dmc-summary"><div class="label">Total. Marks</div><div class="value">${student.maximum}</div><div class="label">Pass. Marks</div><div class="value">${passMarks}</div></div>
+      <div class="dmc-obtained"><div>Marks Obtained</div><div>${student.total}</div></div>
+    </div>
+    <div class="dmc-lower">
+      <div class="dmc-grading"><div class="dmc-grading-title">Grading Chart</div><table>
+        <tr><td>90% and above</td><td>A+</td><td>Outstanding</td></tr><tr><td>80% to 89%</td><td>A</td><td>Excellent</td></tr><tr><td>70% to 79%</td><td>B+</td><td>Very Good</td></tr><tr><td>60% to 69%</td><td>B</td><td>Good</td></tr><tr><td>50% to 59%</td><td>C</td><td>Fair</td></tr><tr><td>40% to 49%</td><td>D</td><td>Average</td></tr><tr><td>below 40%</td><td>E</td><td>Fail</td></tr></table></div>
+      <div class="dmc-percent"><div class="dmc-percent-title">Percentage% / Grade</div><div class="dmc-percent-value">${Number(student.percentage).toFixed(2)}% &nbsp;/&nbsp; ${escapeHtml(student.grade)}</div></div>
+    </div>
+    <div class="dmc-status" style="color:${pass?"#176b35":"#b42318"}">Final Result: ${student.status}${note}</div>
+    <div class="dmc-controller">Controller Examination<div class="dmc-controller-line"></div></div>
+    <div class="dmc-footer">This is a computer-generated academic result.</div></div>`;
+  $("resultWrapper").classList.add("show");$("resultWrapper").scrollIntoView({behavior:"smooth",block:"start"});
 }
-
-/* =========================================================
-   PRINT
-========================================================= */
-
-function printResult(){
-
-    if(
-        !selectedStudent
-    ){
-
-        alert(
-            "Please select a result first."
-        );
-
-        return;
-
-    }
-
-
-    window.print();
-
-}
-
-
-/* =========================================================
-   WHATSAPP
-========================================================= */
-
+function closeResult(){$("resultWrapper").classList.remove("show");selectedStudent=null}
+function printResult(){if(!selectedStudent){alert("Please select a result first.");return}window.print()}
 function shareWhatsApp(){
-
-    if(
-        !selectedStudent
-    ){
-
-        alert(
-            "Please select a result first."
-        );
-
-        return;
-
-    }
-
-
-    const s =
-        selectedStudent;
-
-
-    const message =
-
-`*${settings.schoolName}*
-
-*Official Academic Record*
-
-Student: ${s.name}
-Roll Number: ${s.roll}
-Class: ${s.className} - ${s.section}
-Father/Guardian: ${s.father || "-"}
-
-Examination: ${s.examType}
-Academic Session: ${s.session}
-
-Total Marks: ${s.total}/${s.maximum}
-Percentage: ${s.percentage}%
-Grade: ${s.grade}
-Result: ${s.status}
-
-${settings.schoolAddress}`;
-
-
-    const url =
-        "https://wa.me/?text="
-        +
-        encodeURIComponent(
-            message
-        );
-
-
-    window.open(
-        url,
-        "_blank"
-    );
-
+  const s=selectedStudent;if(!s){alert("Please select a result first.");return}
+  const msg=`*${settings.schoolName}*\n*Official Academic Record*\n\nStudent: ${s.name}\nRoll Number: ${s.roll}\nClass: ${s.className} - ${s.section}\nFather/Guardian: ${s.father||"-"}\n\nExamination: ${s.examType}\nSession: ${s.session}\n\nTotal Marks: ${s.total}/${s.maximum}\nPercentage: ${s.percentage}%\nGrade: ${s.grade}\nResult: ${s.status}${s.failed.length?"\nFailed in: "+s.failed.join(", "):""}\n\n${settings.schoolAddress}`;
+  window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
 }
 
-
-/* =========================================================
-   DELETE STUDENT
-========================================================= */
-
-function deleteStudent(
-    id
-){
-
-    const student =
-        students.find(
-            s =>
-                s.id === id
-        );
-
-
-    if(
-        !student
-    ){
-
-        return;
-
-    }
-
-
-    if(
-        !confirm(
-            `Delete the result of ${student.name}?`
-        )
-    ){
-
-        return;
-
-    }
-
-
-    students =
-        students.filter(
-            s =>
-                s.id !== id
-        );
-
-
-    saveStudents();
-
-    refreshAll();
-
-    closeResult();
-
+/* ================= DELETE / CLEAR ================= */
+function deleteStudent(id){
+  const s=students.find(x=>x.id===id);if(!s||!confirm(`Delete the result of ${s.name}?`))return;
+  students=students.filter(x=>x.id!==id);persist(STORAGE_KEY,students);if(editingId===id){editingId=null;setEditMode(false)}
+  refreshAll();closeResult();toast("Result deleted.");
 }
-
-
-/* =========================================================
-   CLEAR FORM
-========================================================= */
-
 function clearStudentForm(){
-
-    document
-        .getElementById(
-            "studentName"
-        )
-        .value = "";
-
-
-    document
-        .getElementById(
-            "rollNumber"
-        )
-        .value = "";
-
-
-    document
-        .getElementById(
-            "fatherName"
-        )
-        .value = "";
-
-
-    document
-        .getElementById(
-            "className"
-        )
-        .value = "";
-
-
-    document
-        .getElementById(
-            "sectionName"
-        )
-        .value = "";
-
-
-    document
-        .getElementById(
-            "subjectRows"
-        )
-        .innerHTML = "";
-
-
-    createDefaultSubjects();
-
-
-    closeResult();
-
+  ["studentName","rollNumber","fatherName","className","sectionName"].forEach(i=>$(i).value="");
+  $("subjectRows").innerHTML="";createDefaultSubjects();editingId=null;setEditMode(false);closeResult();
 }
 
-
-/* =========================================================
-   CLOSE RESULT
-========================================================= */
-
-function closeResult(){
-
-    document
-        .getElementById(
-            "resultWrapper"
-        )
-        .classList.remove(
-            "show"
-        );
-
-
-    selectedStudent =
-        null;
-
-}
-
-
-/* =========================================================
-   DEMO DATA
-========================================================= */
-
+/* ================= DEMO DATA ================= */
 function loadDemoData(){
-
-    if(
-        students.length > 0
-    ){
-
-        if(
-            !confirm(
-                "You already have results. Add demo data anyway?"
-            )
-        ){
-
-            return;
-
-        }
-
-    }
-
-
-    const demo = [
-
-
-        {
-
-            id:
-                "demo-1",
-
-            name:
-                "Ali Ahmed",
-
-            roll:
-                "101",
-
-            father:
-                "Muhammad Ahmed",
-
-            className:
-                "10",
-
-            section:
-                "A",
-
-            session:
-                "2026-27",
-
-            examType:
-                "Annual Examination",
-
-            subjects:[
-
-                {
-                    subject:
-                        "English",
-
-                    obtained:
-                        86,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Mathematics",
-
-                    obtained:
-                        92,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Science",
-
-                    obtained:
-                        88,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Computer",
-
-                    obtained:
-                        95,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Social Studies",
-
-                    obtained:
-                        81,
-
-                    maximum:
-                        100
-                }
-
-            ]
-
-        },
-
-
-        {
-
-            id:
-                "demo-2",
-
-            name:
-                "Sara Khan",
-
-            roll:
-                "102",
-
-            father:
-                "Imran Khan",
-
-            className:
-                "10",
-
-            section:
-                "A",
-
-            session:
-                "2026-27",
-
-            examType:
-                "Annual Examination",
-
-            subjects:[
-
-                {
-                    subject:
-                        "English",
-
-                    obtained:
-                        78,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Mathematics",
-
-                    obtained:
-                        85,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Science",
-
-                    obtained:
-                        80,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Computer",
-
-                    obtained:
-                        91,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Social Studies",
-
-                    obtained:
-                        76,
-
-                    maximum:
-                        100
-                }
-
-            ]
-
-        },
-
-
-        {
-
-            id:
-                "demo-3",
-
-            name:
-                "Hamza Ali",
-
-            roll:
-                "201",
-
-            father:
-                "Rashid Ali",
-
-            className:
-                "9",
-
-            section:
-                "B",
-
-            session:
-                "2026-27",
-
-            examType:
-                "Annual Examination",
-
-            subjects:[
-
-                {
-                    subject:
-                        "English",
-
-                    obtained:
-                        70,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Mathematics",
-
-                    obtained:
-                        55,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Science",
-
-                    obtained:
-                        68,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Computer",
-
-                    obtained:
-                        82,
-
-                    maximum:
-                        100
-                },
-
-                {
-                    subject:
-                        "Social Studies",
-
-                    obtained:
-                        74,
-
-                    maximum:
-                        100
-                }
-
-            ]
-
-        }
-
-    ];
-
-
-    demo.forEach(
-        student => {
-
-            const result =
-                calculateResult(
-                    student.subjects
-                );
-
-
-            student.total =
-                result.total;
-
-
-            student.maximum =
-                result.maximum;
-
-
-            student.percentage =
-                result.percentage;
-
-
-            student.grade =
-                result.grade;
-
-
-            student.status =
-                result.status;
-
-
-            student.createdAt =
-                new Date()
-                .toISOString();
-
-
-            students.push(
-                student
-            );
-
-        }
-    );
-
-
-    saveStudents();
-
-    refreshAll();
-
-
-    alert(
-        "Demo data loaded successfully."
-    );
-
+  const mk=(id,name,roll,father,c,sec,m)=>({id,name,roll,father,className:c,section:sec,session:"2026-27",examType:"Annual Examination",createdAt:new Date().toISOString(),
+    subjects:["English","Mathematics","Science","Computer","Social Studies"].map((s,i)=>({subject:s,obtained:m[i],maximum:100}))});
+  const demo=[mk("demo-1","Ali Ahmed","101","Muhammad Ahmed","10","A",[86,92,88,95,81]),
+    mk("demo-2","Sara Khan","102","Imran Khan","10","A",[78,85,80,91,76]),
+    mk("demo-3","Hamza Ali","201","Rashid Ali","9","B",[70,55,68,82,74]),
+    mk("demo-4","Bilal Raza","103","Raza Khan","10","A",[72,35,66,80,70]),
+    mk("demo-5","Noor Fatima","104","Abdul Qadir","10","A",[60,30,32,75,68])];
+  let added=0;
+  demo.forEach(d=>{if(!students.some(s=>s.id===d.id)){students.push(applyResult(d));added++}});
+  persist(STORAGE_KEY,students);refreshAll();
+  toast(added?added+" demo results added (includes one student failing a single subject, and one failing two).":"Demo data is already loaded.");
 }
 
-
-/* =========================================================
-   EXPORT BACKUP
-========================================================= */
-
-function exportData(){
-
-    const backup = {
-
-        version:
-            2,
-
-        exportedAt:
-            new Date()
-            .toISOString(),
-
-        settings,
-
-        students
-
-    };
-
-
-    const blob =
-        new Blob(
-            [
-                JSON.stringify(
-                    backup,
-                    null,
-                    2
-                )
-            ],
-            {
-                type:
-                    "application/json"
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
-    const a =
-        document.createElement(
-            "a"
-        );
-
-
-    a.href =
-        url;
-
-
-    a.download =
-        `agahi-school-results-${
-            new Date()
-            .toISOString()
-            .slice(0,10)
-        }.json`;
-
-
-    document
-        .body
-        .appendChild(a);
-
-
-    a.click();
-
-
-    a.remove();
-
-
-    URL.revokeObjectURL(
-        url
-    );
-
+/* ================= EXPORT / IMPORT ================= */
+function download(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
+function exportCSV(){
+  const list=filteredStudents(),ranks=rankMap();
+  if(!list.length){alert("Nothing to export.");return}
+  const names=[...new Set(list.flatMap(s=>s.subjects.map(x=>x.subject)))];
+  const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+  const rows=[["Rank","Roll","Name","Father","Class","Section","Session","Exam",...names,"Total","Maximum","Percentage","Grade","Result","Failed subjects"]];
+  list.forEach(s=>rows.push([ranks[s.id]??"",s.roll,s.name,s.father||"",s.className,s.section,s.session||"",s.examType,
+    ...names.map(n=>{const x=s.subjects.find(y=>y.subject===n);return x?x.obtained:""}),s.total,s.maximum,s.percentage,s.grade,s.status,s.failed.join("; ")]));
+  download("results-"+new Date().toISOString().slice(0,10)+".csv","\ufeff"+rows.map(r=>r.map(q).join(",")).join("\n"),"text/csv");
 }
-
-
-/* =========================================================
-   IMPORT BACKUP
-========================================================= */
-
-function importData(
-    event
-){
-
-    const file =
-        event.target.files[0];
-
-
-    if(
-        !file
-    ){
-
-        return;
-
-    }
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-        function(e){
-
-            try{
-
-                const backup =
-                    JSON.parse(
-                        e.target.result
-                    );
-
-
-                if(
-                    !backup.students
-                    ||
-                    !Array.isArray(
-                        backup.students
-                    )
-                ){
-
-                    throw new Error(
-                        "Invalid backup file."
-                    );
-
-                }
-
-
-                if(
-                    !confirm(
-                        "Importing this backup will replace your current data. Continue?"
-                    )
-                ){
-
-                    return;
-
-                }
-
-
-                students =
-                    backup.students;
-
-
-                if(
-                    backup.settings
-                ){
-
-                    settings =
-                        backup.settings;
-
-
-                    localStorage.setItem(
-                        SETTINGS_KEY,
-                        JSON.stringify(
-                            settings
-                        )
-                    );
-
-
-                    loadSettings();
-
-                }
-
-
-                saveStudents();
-
-                refreshAll();
-
-
-                alert(
-                    "Backup imported successfully."
-                );
-
-
-            }
-            catch(error){
-
-                alert(
-                    "Could not import backup: "
-                    +
-                    error.message
-                );
-
-            }
-
-        };
-
-
-    reader.readAsText(
-        file
-    );
-
-
-    event.target.value = "";
-
+function exportData(){download(`agahi-school-results-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify({version:2,exportedAt:new Date().toISOString(),settings,students},null,2),"application/json")}
+function importData(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    try{
+      const b=JSON.parse(ev.target.result);
+      if(!b||!Array.isArray(b.students))throw new Error("Invalid backup file.");
+      if(!confirm("Importing this backup will replace your current data. Continue?"))return;
+      if(b.settings){settings={...DEFAULT_SETTINGS,...b.settings};persist(SETTINGS_KEY,settings);loadSettings()}
+      students=b.students;recalcAll();persist(STORAGE_KEY,students);refreshAll();toast("Backup imported.");
+    }catch(err){alert("Could not import backup: "+err.message)}
+  };
+  r.readAsText(f);e.target.value="";
 }
-
-
-/* =========================================================
-   DELETE ALL DATA
-========================================================= */
-
 function deleteAllData(){
-
-    const confirmation =
-        prompt(
-            "Type DELETE to permanently remove all student results:"
-        );
-
-
-    if(
-        confirmation !== "DELETE"
-    ){
-
-        return;
-
-    }
-
-
-    students = [];
-
-
-    saveStudents();
-
-    refreshAll();
-
-    closeResult();
-
-
-    alert(
-        "All student results have been deleted."
-    );
-
+  if(prompt("Type DELETE to permanently remove all student results:")!=="DELETE")return;
+  students=[];persist(STORAGE_KEY,students);refreshAll();closeResult();toast("All results deleted.");
 }
-
-
-/* =========================================================
-   HTML SECURITY
-========================================================= */
-
-function escapeHtml(
-    value
-){
-
-    return String(
-        value ?? ""
-    )
-
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-
-    .replace(
-        /</g,
-        "&lt;"
-    )
-
-    .replace(
-        />/g,
-        "&gt;"
-    )
-
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-function escapeAttr(
-    value
-){
-
-    return escapeHtml(
-        value
-    );
-
-}
-
 </script>
-
 </body>
 </html>
